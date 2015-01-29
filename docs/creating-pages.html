@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Cryogen: Creating Pages</title>
-    <link rel="icon" href="/img/logo.png"
+    <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -14,15 +13,23 @@
           type='text/css'>
     <link href="../css/screen.css" rel="stylesheet" type="text/css" />
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-56703143-2', 'auto');
-      ga('send', 'pageview');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-56703143-2', 'auto');
+        ga('send', 'pageview');
     </script>
     <meta name="keywords" content="cryogen, clojure, blog engine, static site, static site generator, leiningen">
-    <meta name="description" content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is fuss free.">
+    <meta name="description"
+          content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
     <meta name="canonical" content="http://cryogenweb.org/docs/creating-pages.html">
@@ -33,16 +40,19 @@
 <div class="container">
     <header>
         <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/><h1>Cryogen</h1></a>
-                <h2 id="slogan" class="faint">Static site generation made easy</h2>
+            <div class="col-lg-5 col-md-5">
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                    <h1>Cryogen</h1></a>
+                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
             </div>
-            <div class="col-lg-7 col-md-7 col-sm-7">
+            <div class="col-lg-7 col-md-7">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
                         <li><a id="home-link" href="/index.html">Home</a></li>
-                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span class="hide-on-mobile">umentation</span></a></li>
-                        <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a></li>
+                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">umentation</span></a></li>
+                        <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -61,7 +71,11 @@
         <div id="content">
              <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown file under your <code>page-root</code>. You don't need to include a date in the file name like you need to with a post but words should still be dash-separated and the file must have a <code>.md</code> extension. For example:</p><pre><code>about.md
 my-projects.md
-</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><ul><li><code>:title</code> - A string representation of your page title.</li><li><code>:layout</code> - A keyword representing the name of the HTML file that you want to use as your page layout.</li><li><code>:page-index</code> - Because pages can be linked up with previous/next links, this is how they get sorted.</li><li><code>:navbar?</code> - Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.  </li></ul><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
+</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><ul><li><code>:title</code> - A string representation of your page title.</li><li><code>:layout</code> - A keyword representing the name of the HTML file that you want to use as your page layout.</li><li><code>:page-index</code> - Because pages can be linked up with previous/next links, this is how they get sorted.</li><li><code>:navbar?</code> - Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</li></ul><p>For example:</p><pre><code>{:title &quot;Check out this page!&quot;
+ :layout :post
+ :page-index 0
+ :navbar? false}
+</code></pre><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
         </div>
 
         <div id="prev-next">

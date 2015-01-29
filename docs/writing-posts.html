@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Cryogen: Writing Posts</title>
-    <link rel="icon" href="/img/logo.png"
+    <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
           type='text/css'>
@@ -14,15 +13,23 @@
           type='text/css'>
     <link href="../css/screen.css" rel="stylesheet" type="text/css" />
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-56703143-2', 'auto');
-      ga('send', 'pageview');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-56703143-2', 'auto');
+        ga('send', 'pageview');
     </script>
     <meta name="keywords" content="cryogen, clojure, blog engine, static site, static site generator, leiningen">
-    <meta name="description" content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is fuss free.">
+    <meta name="description"
+          content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
     <meta name="canonical" content="http://cryogenweb.org/docs/writing-posts.html">
@@ -33,16 +40,19 @@
 <div class="container">
     <header>
         <div class="row">
-            <div class="col-lg-5 col-md-5 col-sm-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/><h1>Cryogen</h1></a>
-                <h2 id="slogan" class="faint">Static site generation made easy</h2>
+            <div class="col-lg-5 col-md-5">
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                    <h1>Cryogen</h1></a>
+                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
             </div>
-            <div class="col-lg-7 col-md-7 col-sm-7">
+            <div class="col-lg-7 col-md-7">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
                         <li><a id="home-link" href="/index.html">Home</a></li>
-                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span class="hide-on-mobile">umentation</span></a></li>
-                        <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a></li>
+                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">umentation</span></a></li>
+                        <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -63,16 +73,31 @@
 </code></pre><p>If no date format was specified in the configuration file, it will default to the ISO 8601 format.</p><pre><code>yyyy-MM-dd-title.md
 </code></pre><p>If your title is more than one word long, it must be separated by dashes. For example, the following are valid post file names:  </p><pre><code>11-04-2014-welcome-to-my-blog.md
 2014-12-01-cryogen-is-greatdocs.md
-</code></pre><p>The first example uses a specified <code>dd-MM-yyyy</code> date format while the second uses the default format. Do note that you cannot mix date formats in post file names though.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><ul><li><code>:title</code> - Your post title provided as a string.</li><li><code>:layout</code> - A keyword corresponding to an HTML file under <code>html/layouts</code>.   </li></ul><p>These are some optional keys that you may provide:</p><ul><li><code>:tags</code> - A vector of strings representing any tags associated with the post.</li><li><code>:toc</code> - Set this to true if you want a table of contents to be generated from the headers/headings in your post.</li></ul><p>The rest of your file should contain valid Markdown content.</p><h3><a name="tags"></a>Tags</h3><p>Cryogen will automatically create a page for each unique tag that you've used in your posts.<br />   </p><h3><a name="including&#95;images&#95;in&#95;posts"></a>Including Images in Posts</h3><p>You'll probably want to include images in your pages or posts eventually. There are different places where you can store these images.</p><p>The common option is to keep them in one folder under the <code>templates</code> directory such as <code>assets</code> or <code>img</code>. Make sure to include the name of this folder in the <code>resources</code> key in your config so the images get transfered to the <code>public</code> folder whne your site compiles.</p><p>The other option is to keep them alongside your Markdown files. This means you would have to save your posts that contain images in a separate folder under your <code>post-root</code>. For example:</p><pre><code> md
+</code></pre><p>The first example uses a specified <code>dd-MM-yyyy</code> date format while the second uses the default format. Do note that you cannot mix date formats in post file names though.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><ul><li><code>:title</code> - Your post title provided as a string.</li><li><code>:layout</code> - A keyword corresponding to an HTML file under <code>html/layouts</code>.   </li></ul><p>These are some optional keys that you may provide:</p><ul><li><code>:tags</code> - A vector of strings representing any tags associated with the post.</li><li><code>:toc</code> - Set this to true if you want a table of contents to be generated from the headers/headings in your post.</li></ul><p>The rest of your file should contain valid Markdown content.</p><p>eg.</p><pre><code>{:title &quot;First Post!&quot;
+ :layout :post
+ :tags  &#91;&quot;tag1&quot; &quot;tag3&quot;&#93;}
+
+ ## Hello World
+
+ This is my first post!
+
+ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ Nunc sodales pharetra massa, eget fringilla ex ornare et.
+ Nunc mattis diam ac urna finibus sodales. Etiam sed ipsum
+ et purus commodo bibendum. Cras libero magna, fringilla
+ tristique quam sagittis, volutpat auctor mi. Aliquam luctus,
+ nulla et vestibulum finibus, nibh justo semper tortor, nec
+ vestibulum tortor est nec nisi.
+</code></pre><h3><a name="tags"></a>Tags</h3><p>Cryogen will automatically create a page for each unique tag that you've used in your posts.<br />   </p><h3><a name="including&#95;images&#95;in&#95;posts"></a>Including Images in Posts</h3><p>You'll probably want to include images in your pages or posts eventually. There are different places where you can store these images.</p><p>The common option is to keep them in one folder under the <code>templates</code> directory such as <code>assets</code> or <code>img</code>. Make sure to include the name of this folder in the <code>resources</code> key in your config so the images get transfered to the <code>public</code> folder whne your site compiles.</p><p>The other option is to keep them alongside your Markdown files. This means you would have to save your posts that contain images in a separate folder under your <code>post-root</code>. For example:</p><pre><code> md
  |---posts
      |---2014-07-13-spain.md
      |---diving
          |---2014-12-05-egypt.md
          |---turtle.jpg
          |---dolphin.jpg
-</code></pre><p>If you'd like to organize your posts in this fashion, please keep in mind that the images under the specific post folder will be copied over to <code>public/img</code> when your site gets compiled so please link to these images in the same fashion described below.</p><h3><a name="images&#95;and&#95;markdown"></a>Images and Markdown</h3><p>Normally, you'd want to include images in your posts by referring to the absolute path of the image in your Markdown content. If I were keeping my images under a folder called <code>img</code>, I would link to it like so:</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
+</code></pre><p>If you'd like to organize your posts in this fashion, please keep in mind that the images under the specific post folder will be copied over to <code>public/img</code> when your site gets compiled so please link to these images in the same fashion described below.</p><h3><a name="images&#95;and&#95;markdown"></a>Images and Markdown</h3><p>Normally, you'd want to include images in your posts by referring to the absolute path of the image in your Markdown content. If you were keeping your images under a folder called <code>img</code>, you would link to it like so:</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
 </code></pre><p>However, if you'd like you add a prefix to your blog such as <code>/blog</code>, your path will be like this:</p><pre><code>!&#91;Image 1&#93;&#40;/blog/img/img01.png&#41;
-</code></pre><p>You can probably see how this would be tedious to maintain if you decided to change your prefix or remove it completely though. Suddenly all your images would be missing from your posts.</p><p>So how do you include images in your posts? Just go with the first example I provided. Cryogen is smart enough to inject your <code>blog-prefix</code> in front of any local images that you include in your posts. Now if your blog prefix was <code>/blog</code>, this:  </p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
+</code></pre><p>You can probably see how this would be tedious to maintain if you decided to change your prefix or remove it completely though. Suddenly all your images would be missing from your posts.</p><p>So how do you include images in your posts? Just go with the first example provided. Cryogen is smart enough to inject your <code>blog-prefix</code> in front of any local images that you include in your posts. Now if your blog prefix was <code>/blog</code>, this:  </p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
 </code></pre><p>will be compiled into this:</p><pre><code>&lt;img src=&quot;/blog/img/img01.png&quot;&gt;
 </code></pre><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Cryogen uses <a href='https://highlightjs.org/'>highlight.js</a> to support syntax highlighting for code snippets you wish to include in your posts or pages. Code blocks should be wrapped with triple backticks (```)  and highlight.js will automatically detect the language and handle the syntax colours. If you want to specify the language, simply do so after the first triple backtick. </p><h2><a name="post&#95;archives"></a>Post Archives</h2><p>Cryogen will automatically generate and update a post archives page for you. If you'd like to change the layout of this page, you can do so by editing the HTML in <code>templates/html/layouts/archives.html</code>.  </p>
         </div>
