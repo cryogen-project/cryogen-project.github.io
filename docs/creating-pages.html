@@ -41,7 +41,7 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                <a href="/index.html"><img height="120px" src="/img/banner.svg"/>
                     <h1>Cryogen</h1></a>
                 <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
             </div>
@@ -71,7 +71,7 @@
         <div id="content">
              <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown file under your <code>page-root</code>. You don't need to include a date in the file name like you need to with a post but words should still be dash-separated and the file must have a <code>.md</code> extension. For example:</p><pre><code>about.md
 my-projects.md
-</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><ul><li><code>:title</code> - A string representation of your page title.</li><li><code>:layout</code> - A keyword representing the name of the HTML file that you want to use as your page layout.</li><li><code>:page-index</code> - Because pages can be linked up with previous/next links, this is how they get sorted.</li><li><code>:navbar?</code> - Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</li></ul><p>For example:</p><pre><code>{:title &quot;Check out this page!&quot;
+</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>html/layouts</code>.</td> </tr> <tr> <td><code>page-index</code></td> <td>Because pages can be linked up with previous/next links, this is how they get sorted.</td> </tr> <tr> <td><code>navbar?</code></td> <td>Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</td> </tr> </tbody> </table></p><p>For example:</p><pre><code>{:title &quot;Check out this page!&quot;
  :layout :post
  :page-index 0
  :navbar? false}

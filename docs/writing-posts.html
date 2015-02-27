@@ -41,7 +41,7 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                <a href="/index.html"><img height="120px" src="/img/banner.svg"/>
                     <h1>Cryogen</h1></a>
                 <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
             </div>
@@ -73,7 +73,7 @@
 </code></pre><p>If no date format was specified in the configuration file, it will default to the ISO 8601 format.</p><pre><code>yyyy-MM-dd-title.md
 </code></pre><p>If your title is more than one word long, it must be separated by dashes. For example, the following are valid post file names:  </p><pre><code>11-04-2014-welcome-to-my-blog.md
 2014-12-01-cryogen-is-greatdocs.md
-</code></pre><p>The first example uses a specified <code>dd-MM-yyyy</code> date format while the second uses the default format. Do note that you cannot mix date formats in post file names though.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><ul><li><code>:title</code> - Your post title provided as a string.</li><li><code>:layout</code> - A keyword corresponding to an HTML file under <code>html/layouts</code>.   </li></ul><p>These are some optional keys that you may provide:</p><ul><li><code>:tags</code> - A vector of strings representing any tags associated with the post.</li><li><code>:toc</code> - Set this to true if you want a table of contents to be generated from the headers/headings in your post.</li></ul><p>The rest of your file should contain valid Markdown content.</p><p>eg.</p><pre><code>{:title &quot;First Post!&quot;
+</code></pre><p>The first example uses a specified <code>dd-MM-yyyy</code> date format while the second uses the default format. Do note that you cannot mix date formats in post file names though.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>html/layouts</code>.</td> </tr> </tbody> </table></p><p>These are some optional keys that you may provide:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>tags</code></td> <td>A vector of strings representing any tags associated with the post.</td> </tr> <tr> <td><code>toc</code></td> <td>Set this to true if you want a table of contents to be generated from the headers/headings in your post.</td> </tr> </tbody> </table></p><p>The rest of your file should contain valid Markdown content.</p><p>eg.</p><pre><code>{:title &quot;First Post!&quot;
  :layout :post
  :tags  &#91;&quot;tag1&quot; &quot;tag3&quot;&#93;}
 
