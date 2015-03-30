@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Directory Structure</title>
+    <title>Cryogen: Verzeichnisstruktur</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/structure.html">
+    <meta name="canonical" content="http://cryogenweb.org/de/docs/structure.html">
     
 </head>
 <body>
@@ -41,18 +41,17 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-6">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                <a href="/de/index.html"><img height="120px" src="/img/banner.png"/>
                     <h1>Cryogen</h1></a>
-                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
+                <h2 id="slogan" class="faint">Statische Seiten, generiert mit Clojure</h2>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-6">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
-                        <li><a id="home-link" href="/index.html">Home</a></li>
-                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
-                                class="hide-on-mobile">umentation</span></a></li>
-                        <li><a id="news-link" href="/news.html">News</a></li>
-                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        <li><a id="home-link" href="/de/index.html">Home</a></li>
+                        <li><a id="docs-link" href="/de/docs/home.html">Doku<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">mentation</span></a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">Auch auf </span>GitHub</a>
                         </li>
                     </ul>
                 </nav>
@@ -65,12 +64,12 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
         <div id="page-header">
-            <h1>Directory Structure</h1>
+            <h1>Verzeichnisstruktur</h1>
         </div>
         
 
         <div id="content">
-             <p>A basic Cryogen site usually looks something like this: (New files may be added in the future)</p><pre><code>my-blog
+             <p>Eine Cryogen-Seite hat normalerweise folgende Struktur: (Neue Dateien k&oumlnnen in der Zukunft dazu kommen)</p><pre><code>mein-blog
  |---resources
  |   |---public
  |   |---templates
@@ -100,49 +99,49 @@
  |   |---cryogen
  |   |   |---server.clj
  |---project.clj
-</code></pre><p><table class="table table-bordered"> <thead> <tr> <th>File/Dir</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>Resources</code></td> <td>This is where all of your site content and configuration will go. It's divided into the <code>templates</code> folder and the <code>public</code> folder.</td> </tr> <tr> <td><code>public</code></td> <td>This is where the generated site will go once Cryogen is done compiling your content.</td> </tr> <tr> <td><code>templates</code></td> <td>The main folder where all your HTML layouts and Markdown content will go.</td> </tr> <tr> <td><code>css</code></td> <td>Pretty self explanatory. Put your css files here</td> </tr> <tr> <td><code>html/layouts</code></td> <td>These are they templates that wrap posts and pages. Layouts are selected on a post-by-post basis and content gets injected by Selmer. </td> </tr> <tr> <td><code>js</code></td> <td>Also self explanatory. JavaScript files go here.</td> </tr> <tr> <td><code>md</code></td> <td>Keep your Markdown content here. </td> </tr> <tr> <td><code>pages</code></td> <td>The root folder for all your custom Markdown pages. This folder name can be changed in config.edn.</td> </tr> <tr> <td><code>posts</code></td> <td>The root folder for all your post content in Markdown. This folder name can also be changed.</td> </tr> <tr> <td><code>404.html</code></td> <td>The default 404 page provided.</td> </tr> <tr> <td><code>config.edn</code></td> <td>Configuration data for your site.</td> </tr> <tr> <td><code>src/cryogen</code></td> <td>Contains the core and server.</td> </tr> <tr> <td><code>sass-src</code></td> <td>Directory containing sass(scss) files to be compiled; nil defaults to "css". Be sure to include this directory in your resources section.</td> </tr> <tr> <td><code>project.clj</code></td> <td>Your typical project file for a Clojure project.</td> </tr> </tbody> </table></p>
+</code></pre><p><table class="table table-bordered"> <thead> <tr> <th>Name</th> <th>Beschreibung</th> </tr> </thead> <tbody> <tr> <td><code>resources</code></td> <td>Hier speichern Sie den Inhalt Ihrer Seite und die Konfiguration. Es ist aufgeteilt in die Ordner <code>templates</code> und <code>public</code>.</td> </tr> <tr> <td><code>public</code></td> <td>Hier speichert Cryogen Ihre Seite, wenn diese fertig kompiliert ist.</td> </tr> <tr> <td><code>templates</code></td> <td>Der Ordner, in dem alle Ihre HTML-Vorlagen und Markdown-Dateien sind.</td> </tr> <tr> <td><code>css</code></td> <td>Erkl&aumlrt sich von selbst. Legen Sie hier Ihre CSS-Dateien an.</td> </tr> <tr> <td><code>html/layouts</code></td> <td>Dies sind die Vorlagen, in die Sie Ihre Posts und Seiten einf&uumlgen. Layouts werden per Post ausgew&aumlhlt und der Inhalt wird per <a href='https://github.com/yogthos/selmer'>Selmer</a> eingef&uumlgt. </td> </tr> <tr> <td><code>js</code></td> <td>Erkl&aumlrt sich auch von selbst.</td> </tr> <tr> <td><code>md</code></td> <td>Speichern Sie Ihre Markdown-Dateien hier. </td> </tr> <tr> <td><code>pages</code></td> <td>Der root-Ordner f&uumlr alle Ihre Mardown-Seiten. Der Name des Ordners kann in der Datei <code>config.edn</code> ge&aumlndert werden.</td> </tr> <tr> <td><code>posts</code></td> <td>Der root-Ordner f&uumlr Ihre Posts in Markdown. Der Name des Ordners kann in der Datei <code>config.edn</code> ge&aumlndert werden.</td> </tr> <tr> <td><code>404.html</code></td> <td>Die Standard 404-Error-Seite.</td> </tr> <tr> <td><code>config.edn</code></td> <td>Konfigurationsdatei f&uumlr Ihre Seite.</td> </tr> <tr> <td><code>src/cryogen</code></td> <td>Enth&aumllt den Server.</td> </tr> <tr> <td><code>project.clj</code></td> <td>Eine typische Projekt-Datei f&uumlr ein Clojure-Projekt.</td> </tr> </tbody> </table></p>
         </div>
 
         <div id="prev-next">
             
-            <a class="left" href="/docs/getting-started.html">&laquo; Prev</a>
+            <a class="left" href="/de/docs/getting-started.html">&laquo; Zur&uumlck</a>
             
             
-            <a class="right" href="/docs/configuration.html">Next &raquo;</a>
+            <a class="right" href="/de/docs/configuration.html">Vor &raquo;</a>
             
         </div>
     </div>
     <div id="topics-list" class="col-lg-2 col-md-2 col-sm-12">
         <div id="topics">
             
-            <h4>Getting Started</h4>
+            <h4>Anfangen</h4>
             <ul>
                 
-                <li><a href="/docs/home.html">Welcome</a></li>
+                <li><a href="/de/docs/home.html">Willkommen</a></li>
                 
-                <li><a href="/docs/getting-started.html">Getting Started</a></li>
+                <li><a href="/de/docs/getting-started.html">Anfangen</a></li>
                 
-                <li><a href="/docs/structure.html">Directory Structure</a></li>
+                <li><a href="/de/docs/structure.html">Verzeichnisstruktur</a></li>
                 
-                <li><a href="/docs/configuration.html">Configuration</a></li>
+                <li><a href="/de/docs/configuration.html">Konfiguration</a></li>
                 
             </ul>
             
-            <h4>Your Content</h4>
+            <h4>Ihr Inhalt</h4>
             <ul>
                 
-                <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
+                <li><a href="/de/docs/writing-posts.html">Posts schreiben</a></li>
                 
-                <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                <li><a href="/de/docs/creating-pages.html">Seiten erstellen</a></li>
                 
             </ul>
             
-            <h4>Deployment</h4>
+            <h4>Ins Netz stellen</h4>
             <ul>
                 
-                <li><a href="/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
+                <li><a href="/de/docs/deploying-to-github-pages.html">GitHub-Seiten</a></li>
                 
-                <li><a href="/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
+                <li><a href="/de/docs/deploying-with-nginx-VPS.html">Nginx auf einem VPS</a></li>
                 
             </ul>
             
@@ -153,10 +152,10 @@
     </div>
 
     <footer class="text-center text-muted">
-        <p><a href="http://cryogenweb.org/de">View in German</a></p>
+        <p><a href="http://cryogenweb.org/">Blick in Englisch</a></p>
         <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
-        Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
+            Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
     </footer>
 </div>
 

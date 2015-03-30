@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Simple static sites</title>
+    <title>Cryogen: Einfache statische Seiten</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -41,18 +41,17 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5 col-sm-6">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                <a href="/de/index.html"><img height="120px" src="/img/banner.png"/>
                     <h1>Cryogen</h1></a>
-                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
+                <h2 id="slogan" class="faint">Statische Seiten, generiert mit Clojure</h2>
             </div>
             <div class="col-lg-7 col-md-7 col-sm-6">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
-                        <li><a id="home-link" href="/index.html">Home</a></li>
-                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
-                                class="hide-on-mobile">umentation</span></a></li>
-                        <li><a id="news-link" href="/news.html">News</a></li>
-                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        <li><a id="home-link" href="/de/index.html">Home</a></li>
+                        <li><a id="docs-link" href="/de/docs/home.html">Doku<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">mentation</span></a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">Auch auf </span>GitHub</a>
                         </li>
                     </ul>
                 </nav>
@@ -63,35 +62,33 @@
         
 <div id="perks" class="row">
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <h2>Simple</h2>
-        <p>Shipped as a template on Leiningen, a Clojure build tool. No need to configure databases - it just works
-            out of the box.</p>
+        <h2>Einfach</h2>
+        <p>Ein Programm, um Seiten mit Clojure zu generiern, verpackt als Leiningen-Template. Es m&uumlssen keine Datenbanken generiert werden, es funktionert sofort.</p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <h2>Static</h2>
-        <p>Clear separation between your content and layouts makes for fuss free customization. CSS and JavaScript
-            can be easily added.</p>
+        <h2>Statisch</h2>
+        <p>Klare Trennung von Inhalt und Layout erlaubt eine einfache Anpassung an Ihre Bed&uumlrfnisse. CSS und JavaScript k&oumlnnen leicht hinzugef&uumlgt werden.</p>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4">
-        <h2>Automated</h2>
-        <p>No need to worry about linking up your posts or updating your sitemap and RSS feed, Cryogen does it all.</p>
+        <h2>Automatisch</h2>
+        <p>Sie m&uumlssen sich nicht darum k&umlmmern, Ihre Posts zu verlinken oder Ihre sitemap und RSS Feed aktuell zu halten - Cryogen macht das f&uumlr Sie.</p>
     </div>
 </div>
 
-<h2>Get Started in Seconds</h2>
+<h2>Anfangen in Sekunden</h2>
 
 <div class="row">
-    <div class="col-lg-7 col-md-7 col-sm-6 instructions">
+    <div class="col-lg-7 instructions">
         <ol>
-            <li>Install <a href="http://leiningen.org/">Leiningen</a></li>
-            <li>Create a new project</li>
-            <li>Start the server and visit <code>localhost:3000</code> in your browser</li>
+            <li>Installieren Sie <a href="http://leiningen.org/">Leiningen</a></li>
+            <li>Starten Sie ein neues Projekt</li>
+            <li>Starten Sie den server und rufen Sie <code>localhost:3000</code> in Ihrem Browser auf</li>
         </ol>
     </div>
-    <div class="col-lg-5 col-md-5 col-sm-6">
-        <pre class="shell"><p class="title">Quick Start Guide</p><code class="bash"><span class="dir">~ </span><span
-class="prompt">$ </span><span class="cmd">lein new cryogen my-blog</span>
-<span class="dir">~ </span><span class="prompt">$ </span><span class="cmd">cd my-blog</span>
+    <div class="col-lg-5">
+        <pre class="shell"><p class="title">Schnellstart</p><code class="bash"><span class="dir">~ </span><span
+class="prompt">$ </span><span class="cmd">lein new cryogen mein-blog</span>
+<span class="dir">~ </span><span class="prompt">$ </span><span class="cmd">cd mein-blog</span>
 <span class="dir">~/my-blog </span><span class="prompt">$ </span><span
 class="cmd">lein ring server</span>
 Started server on port 3000</code></pre>
@@ -101,10 +98,10 @@ Started server on port 3000</code></pre>
     </div>
 
     <footer class="text-center text-muted">
-        <p><a href="http://cryogenweb.org/de">View in German</a></p>
+        <p><a href="http://cryogenweb.org/">Blick in Englisch</a></p>
         <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
-        Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
+            Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
     </footer>
 </div>
 

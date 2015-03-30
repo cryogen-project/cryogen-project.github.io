@@ -40,18 +40,19 @@
 <div class="container">
     <header>
         <div class="row">
-            <div class="col-lg-5 col-md-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.svg"/>
+            <div class="col-lg-5 col-md-5 col-sm-6">
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
                     <h1>Cryogen</h1></a>
                 <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
             </div>
-            <div class="col-lg-7 col-md-7">
+            <div class="col-lg-7 col-md-7 col-sm-6">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
                         <li><a id="home-link" href="/index.html">Home</a></li>
                         <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
                                 class="hide-on-mobile">umentation</span></a></li>
-                        <li><a href="https://github.com/lacarmen/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        <li><a id="news-link" href="/news.html">News</a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
                         </li>
                     </ul>
                 </nav>
@@ -69,7 +70,7 @@
         
 
         <div id="content">
-            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2><a name="what&#95;is&#95;cryogen?"></a>What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href='https://GitHub.com/yogthos/selmer'>Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href='https://GitHub.com/lacarmen/cryogen/issues/new'>open an issue</a> on the GitHub page and further instructions can be included here.</p>
+            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2><a name="what&#95;is&#95;cryogen?"></a>What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href='https://GitHub.com/yogthos/selmer'>Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href='https://github.com/cryogen-project/cryogen/issues/new'>open an issue</a> on the GitHub page and further instructions can be included here.</p>
         </div>
 
         <div id="prev-next">
@@ -118,12 +119,12 @@
 </div>
 
     </div>
-    <hr>
 
     <footer class="text-center text-muted">
-        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span></p>
+        <p><a href="http://cryogenweb.org/de">View in German</a></p>
+        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
-        <p>Powered by <a href="https://github.com/lacarmen/cryogen">Cryogen</a></p>
+        Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
     </footer>
 </div>
 

@@ -37,17 +37,17 @@
     <header>
         <div class="row">
             <div class="col-lg-5 col-md-5">
-                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                <a href="{{index-uri}}"><img height="120px" src="/img/banner.png"/>
                     <h1>{{title}}</h1></a>
-                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
+                <h2 id="slogan" class="faint">Statische Seiten, generiert mit Clojure</h2>
             </div>
             <div class="col-lg-7 col-md-7">
                 <nav>
                     <ul id="menu" class="nav nav-pills navbar-right">
-                        <li><a id="home-link" href="/index.html">Home</a></li>
-                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
-                                class="hide-on-mobile">umentation</span></a></li>
-                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        <li><a id="home-link" href="{{index-uri}}">Home</a></li>
+                        <li><a id="docs-link" href="/de/docs/home.html">Doku<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">mentation</span></a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">Auch auf </span>GitHub</a>
                         </li>
                     </ul>
                 </nav>
@@ -57,20 +57,17 @@
     <div id="main" class="row">
         <div id="reading-pane" class="col-lg-12 col-md-12 col-sm-12" style="text-align: center;">
             <h1>404!</h1>
-            <p>Sorry! The page you're looking for does not exist.</p>
+            <p>Fehler! Die Seite wurde nicht gefunden.</p>
         </div>
     </div>
     <hr>
 
     <footer class="text-center text-muted">
-        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span></p>
+        <p><a href="http://cryogenweb.org/">Blick in Englisch</a></p>
+        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
-        <p>Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
+            Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
     </footer>
 </div>
 
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="js/main.js"></script>
-</body>
-</html>
+
