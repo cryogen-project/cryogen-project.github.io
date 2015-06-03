@@ -70,7 +70,7 @@
         
 
         <div id="content">
-             <p>A Virtual Private Servers (VPS) such as <a href='https://www.digitalocean.com/'>DigitalOcean</a> are an excellent way to host a site with static content for around $5 per month. Here's a quick rundown on how to serve your content with <a href='http://wiki.nginx.org/'>Nginx</a> on VPS running Ubuntu.</p><h2><a name="setting&#95;up&#95;nginx"></a>Setting up Nginx</h2><p>The first thing you'll need to do is install Nginx if you don't already have it on your server.</p><pre><code>$ sudo apt-get install nginx
+             <p>Virtual Private Servers (VPS), such as those provided by <a href='https://www.digitalocean.com/'>DigitalOcean</a>, are an excellent way to host a site with static content for around $5 per month. Here's a quick rundown on how to serve your content with <a href='http://wiki.nginx.org/'>Nginx</a> on VPS running Ubuntu.</p><h2><a name="setting&#95;up&#95;nginx"></a>Setting up Nginx</h2><p>The first thing you'll need to do is install Nginx if you don't already have it on your server.</p><pre><code>$ sudo apt-get install nginx
 </code></pre><p>Next, you'll want to create a directory for your site's content and make it public. For the purposes of this guide, let's suppose we're on a user called <code>deploy</code> with sudo permissions. </p><pre><code>$ mkdir &#126;/site
 $ chmod 755 &#126;/site
 </code></pre><p>Next, you'll want to make a backup of the default configuration in /etc/nginx/sites-available/default and replace it with one of the following:</p><h3><a name="configuration&#95;for&#95;sites&#95;with&#95;no&#95;blog-prefix"></a>Configuration for sites with no blog-prefix</h3><pre><code>server {
