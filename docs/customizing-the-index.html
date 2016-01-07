@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Cryogen: Customizing your Index Page</title>
+    <link rel="icon" href="/img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+          type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href="../css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-56703143-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <meta name="keywords" content="cryogen, clojure, blog engine, static site, static site generator, leiningen">
+    <meta name="description"
+          content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
+    
+    
+    <meta name="canonical" content="http://cryogenweb.org/docs/customizing-the-index.html">
+    
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-6">
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                    <h1>Cryogen</h1></a>
+                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-6">
+                <nav>
+                    <ul id="menu" class="nav nav-pills navbar-right">
+                        <li><a id="home-link" href="/index.html">Home</a></li>
+                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">umentation</span></a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="main" class="row">
+        
+
+<div class="row">
+    <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
+        <div id="page-header">
+            <h1>Customizing your Index Page</h1>
+        </div>
+        
+
+        <div id="content">
+            <p>On the index page of your blog you have the option of displaying a single blog post or a list of previews of several blog posts.</p><h2><a name="the&#95;single&#95;post&#95;option"></a>The Single Post Option</h2><p>This option allows you to display your latest blog post on the index page of your site. The prev/next links then allow readers to navigate between blog psots.</p><p>(Ex. <a href='http://yogthos.net/'>yogthos.net</a>)</p><p>This option requires no changes to the default <code>config.edn</code> file. Just set the <code>:previews?</code> key to <code>false</code> and you're good to go.</p><h2><a name="showing&#95;a&#95;list&#95;of&#95;previews"></a>Showing a List of Previews</h2><p>This option will allow you to display a number of "previews" of your blog posts on your index page. Each preview will show the post title followed by a snippet from the post and a link to the full article. Clicking the prev/next links will then allow readers to view the next set of previews.</p><p>An example taken from the project owner's blog:</p><p><img src="/img/preview-example.png" alt="Preview Example" /></p><p>To set up the previews there are three keys that you need to update in <code>config.edn</code>.</p><p><code>:posts-per-page</code> - Set this to the number of previews that you want to display on your index page.</p><p><code>:blocks-per-preview</code> - This is the number of html blocks that will be displayed in each preview by default. For example, if your blog posts consists of an <code>h2</code> tag and eight <code>p</code> tags then setting the value of this key to <code>3</code> will show the <code>h2</code> tag and two of the <code>p</code> tags in the post snippet.</p><p>If you want to override the default snippet length then you can insert a <code>&lt;!--more--&gt;</code> marker into your Markdown/AsciiDoc file to indicate where you'd like to break off your snippet.</p><p><code>:previews?</code> - This needs to be set to <code>true</code>.</p>
+        </div>
+
+        <div id="prev-next">
+            
+            <a class="left" href="/docs/creating-pages.html">&laquo; Prev</a>
+            
+            
+            <a class="right" href="/docs/deploying-to-github-pages.html">Next &raquo;</a>
+            
+        </div>
+    </div>
+    <div id="topics-list" class="col-lg-2 col-md-2 col-sm-12">
+        <div id="topics">
+            
+            <h4>Getting Started</h4>
+            <ul>
+                
+                <li><a href="/docs/home.html">Welcome</a></li>
+                
+                <li><a href="/docs/getting-started.html">Getting Started</a></li>
+                
+                <li><a href="/docs/structure.html">Directory Structure</a></li>
+                
+                <li><a href="/docs/configuration.html">Configuration</a></li>
+                
+            </ul>
+            
+            <h4>Your Content</h4>
+            <ul>
+                
+                <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
+                
+                <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                
+                <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
+                
+            </ul>
+            
+            <h4>Deployment</h4>
+            <ul>
+                
+                <li><a href="/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
+                
+                <li><a href="/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <footer class="text-center text-muted">
+        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
+
+        Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
+    </footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="../js/main.js" type="text/javascript"></script>
+<script src="../js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
