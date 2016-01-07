@@ -51,7 +51,6 @@
                         <li><a id="home-link" href="/index.html">Home</a></li>
                         <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
                                 class="hide-on-mobile">umentation</span></a></li>
-                        <li><a id="news-link" href="/news.html">News</a></li>
                         <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
                         </li>
                     </ul>
@@ -70,12 +69,13 @@
         
 
         <div id="content">
-             <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown file under your <code>page-root</code>. You don't need to include a date in the file name like you need to with a post but words should still be dash-separated and the file must have a <code>.md</code> extension. For example:</p><pre><code>about.md
+             <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown/AsciiDoc file under your <code>page-root</code>. You don't need to include a date in the file name or in the metadata like you did a post but words should still be dash-separated and the file must have a <code>.md</code> or <code>.asc</code> extension. For example:</p><pre><code>about.md
 my-projects.md
-</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>html/layouts</code>.</td> </tr> <tr> <td><code>page-index</code></td> <td>Because pages can be linked up with previous/next links, this is how they get sorted.</td> </tr> <tr> <td><code>navbar?</code></td> <td>Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</td> </tr> </tbody> </table></p><p>For example:</p><pre><code>{:title &quot;Check out this page!&quot;
- :layout :post
+contact-me.asc
+</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>themes/{theme}/html</code>.</td> </tr> <tr> <td><code>page-index</code></td> <td>Because pages can be linked up with previous/next links, this is how they get sorted.</td> </tr> <tr> <td><code>navbar?</code></td> <td>Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</td> </tr> </tbody> </table></p><p>For example:</p><pre><code>{:title      &quot;Check out this page!&quot;
+ :layout     :page
  :page-index 0
- :navbar? false}
+ :navbar?    false}
 </code></pre><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
         </div>
 
@@ -84,7 +84,7 @@ my-projects.md
             <a class="left" href="/docs/writing-posts.html">&laquo; Prev</a>
             
             
-            <a class="right" href="/docs/deploying-to-github-pages.html">Next &raquo;</a>
+            <a class="right" href="/docs/customizing-the-index.html">Next &raquo;</a>
             
         </div>
     </div>
@@ -111,6 +111,8 @@ my-projects.md
                 
                 <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
                 
+                <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
+                
             </ul>
             
             <h4>Deployment</h4>
@@ -129,7 +131,6 @@ my-projects.md
     </div>
 
     <footer class="text-center text-muted">
-        <p><a href="http://cryogenweb.org/de">View in German</a></p>
         <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
         Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>

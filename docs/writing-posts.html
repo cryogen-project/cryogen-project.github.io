@@ -51,7 +51,6 @@
                         <li><a id="home-link" href="/index.html">Home</a></li>
                         <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
                                 class="hide-on-mobile">umentation</span></a></li>
-                        <li><a id="news-link" href="/news.html">News</a></li>
                         <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
                         </li>
                     </ul>
@@ -70,13 +69,11 @@
         
 
         <div id="content">
-             <p>Blogging with Cryogen is part of its core functionality. You can simply maintain a folder of text files containing Markdown content and Cryogen will take care of compiling them into a blog.</p><h2><a name="the&#95;posts&#95;folder"></a>The Posts Folder</h2><p>All of your blog posts should reside under the <code>post-root</code> folder specified in your configuration file. As long as the file contains the proper metadata (discussed later) about the layout of the post followed by valid Markdown content, they will be converted into an HTML page.</p><h2><a name="creating&#95;posts"></a>Creating Posts</h2><p>To create a new blog post, all you need to do is create a new Markdown file under your <code>post-root</code> directory. The way you name these files is important. If your specified date format in your configuration file was <code>dd-MM-yyyy</code>, Cryogen would require your posts to be named in this format:</p><pre><code>dd-MM-yyyy-title.md
-</code></pre><p>If no date format was specified in the configuration file, it will default to the ISO 8601 format.</p><pre><code>yyyy-MM-dd-title.md
-</code></pre><p>If your title is more than one word long, it must be separated by dashes. For example, the following are valid post file names:  </p><pre><code>11-04-2014-welcome-to-my-blog.md
-2014-12-01-cryogen-is-greatdocs.md
-</code></pre><p>The first example uses a specified <code>dd-MM-yyyy</code> date format while the second uses the default format. Do note that you cannot mix date formats in post file names though.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>html/layouts</code>.</td> </tr> </tbody> </table></p><p>These are some optional keys that you may provide:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>tags</code></td> <td>A vector of strings representing any tags associated with the post.</td> </tr> <tr> <td><code>toc</code></td> <td>Set this to true if you want a table of contents to be generated from the headers/headings in your post.</td> </tr> </tbody> </table></p><p>The rest of your file should contain valid Markdown content.</p><p>eg.</p><pre><code>{:title &quot;First Post!&quot;
+             <p>Blogging with Cryogen is part of its core functionality. You can simply maintain a folder of text files containing Markdown content and Cryogen will take care of compiling them into a blog.</p><h2><a name="the&#95;posts&#95;folder"></a>The Posts Folder</h2><p>All of your blog posts should reside under the <code>post-root</code> folder specified in your configuration file. As long as the file contains the proper metadata (discussed later) about the layout of the post followed by valid Markdown content, they will be converted into an HTML page.</p><h2><a name="creating&#95;posts"></a>Creating Posts</h2><p>To create a new blog post, all you need to do is create a new Markdown (or AsciiDoc) file under your <code>post-root</code> directory. You must add a date to your post in one of two ways.</p><p>The first option is to specify the date of the post right in the name of the Markdown file. The way you name these files is important. The date format in your file name must match the date format specified in your <code>config.edn</code> file.</p><p>For example, if your specified date format in your configuration file was <code>dd-MM-yyyy</code>, Cryogen would require your posts to be named in this format:</p><pre><code>dd-MM-yyyy-title.md
+</code></pre><p>If no date format was specified in the configuration file, the default is the ISO 8601 format (yyyy-MM-dd).</p><p>Alternatively, you can leave the date out of the post name and specify it in the metadata of the file under the <code>:date</code> key. The date format must also match the format specified in your <code>config.edn</code> file in this case.</p><p>If your title is more than one word long, it must be separated by dashes.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>themes/{theme}/html</code>.</td> </tr> </tbody> </table></p><p>These are some optional keys that you may provide:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td style="width:100px"><code>date</code></td> <td>The date that your post was written. Must follow the date format specified in <code>config.edn</code>. <u>Not</u> optional if you did not include the post date in the file name.</td> </tr> <tr> <td><code>tags</code></td> <td>A vector of strings representing any tags associated with the post.</td> </tr> <tr> <td><code>toc</code></td> <td> Set this to true if you want a table of contents to be generated from the headers/headings in your post. (The default table of contents format is an ordered list. Set this to <code>:ul</code> if you want a bulleted list.) </td> </tr> <tr> <td><code>draft</code></td> <td> Files that have this key set to <code>true</code> will not be included in the compilation process. </td> </tr> </tbody> </table></p><p>The rest of your file should contain valid Markdown content. For example:</p><pre><code>{:title  &quot;First Post!&quot;
  :layout :post
- :tags  &#91;&quot;tag1&quot; &quot;tag3&quot;&#93;}
+ :date   2016-01-01
+ :tags   &#91;&quot;tag1&quot; &quot;tag3&quot;&#93;}
 
  ## Hello World
 
@@ -96,9 +93,8 @@
          |---2014-12-05-egypt.md
          |---turtle.jpg
          |---dolphin.jpg
-</code></pre><p>If you'd like to organize your posts in this fashion, please keep in mind that the images under the specific post folder will be copied over to <code>public/img</code> when your site gets compiled so please link to these images in the same fashion described below.</p><h3><a name="images&#95;and&#95;markdown"></a>Images and Markdown</h3><p>Normally, you'd want to include images in your posts by referring to the absolute path of the image in your Markdown content. If you were keeping your images under a folder called <code>img</code>, you would link to it like so:</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
-</code></pre><p>However, if you'd like you add a prefix to your blog such as <code>/blog</code>, your path will be like this:</p><pre><code>!&#91;Image 1&#93;&#40;/blog/img/img01.png&#41;
-</code></pre><p>You can probably see how this would be tedious to maintain if you decided to change your prefix or remove it completely though. Suddenly all your images would be missing from your posts.</p><p>So how do you include images in your posts? Just go with the first example provided. Cryogen is smart enough to inject your <code>blog-prefix</code> in front of any local images that you include in your posts. Now if your blog prefix was <code>/blog</code>, this:  </p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
+</code></pre><p>If you'd like to organize your posts in this fashion, please keep in mind that the images under the specific post folder will be copied over to <code>public/img</code> when your site gets compiled so please link to these images in the same fashion described below.</p><h3><a name="images&#95;and&#95;markdown"></a>Images and Markdown</h3><p>All images should be included in your Markdown content in the following format. (If <code>img</code> were a folder that you created under <code>resources/templates</code>.)</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
+</code></pre><p>If you have a prefix such as <code>/blog</code> specified in your <code>config.edn</code> Cryogen will prepend it to any local images that you include in your posts. So this</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
 </code></pre><p>will be compiled into this:</p><pre><code>&lt;img src=&quot;/blog/img/img01.png&quot;&gt;
 </code></pre><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Cryogen uses <a href='https://highlightjs.org/'>highlight.js</a> to support syntax highlighting for code snippets you wish to include in your posts or pages. Code blocks should be wrapped with triple backticks (```)  and highlight.js will automatically detect the language and handle the syntax colours. If you want to specify the language, simply do so after the first triple backtick. </p><h2><a name="post&#95;archives"></a>Post Archives</h2><p>Cryogen will automatically generate and update a post archives page for you. If you'd like to change the layout of this page, you can do so by editing the HTML in <code>templates/themes/{theme}/html/archives.html</code>.  </p>
         </div>
@@ -135,6 +131,8 @@
                 
                 <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
                 
+                <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
+                
             </ul>
             
             <h4>Deployment</h4>
@@ -153,7 +151,6 @@
     </div>
 
     <footer class="text-center text-muted">
-        <p><a href="http://cryogenweb.org/de">View in German</a></p>
         <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
 
         Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
