@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+    <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
           type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
     <link href="../css/screen.css" rel="stylesheet" type="text/css" />
     <script>
         (function (i, s, o, g, r, a, m) {
@@ -62,14 +61,14 @@
         
 
 <div class="row">
-    <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
+    <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
             <h1>Writing Posts</h1>
         </div>
         
 
         <div id="content">
-             <p>Blogging with Cryogen is part of its core functionality. You can simply maintain a folder of text files containing Markdown content and Cryogen will take care of compiling them into a blog.</p><h2><a name="the&#95;posts&#95;folder"></a>The Posts Folder</h2><p>All of your blog posts should reside under the <code>post-root</code> folder specified in your configuration file. As long as the file contains the proper metadata (discussed later) about the layout of the post followed by valid Markdown content, they will be converted into an HTML page.</p><h2><a name="creating&#95;posts"></a>Creating Posts</h2><p>To create a new blog post, all you need to do is create a new Markdown (or AsciiDoc) file under your <code>post-root</code> directory. You must add a date to your post in one of two ways.</p><p>The first option is to specify the date of the post right in the name of the Markdown file. The way you name these files is important. The date format in your file name must match the date format specified in your <code>config.edn</code> file.</p><p>For example, if your specified date format in your configuration file was <code>dd-MM-yyyy</code>, Cryogen would require your posts to be named in this format:</p><pre><code>dd-MM-yyyy-title.md
+             <p>Blogging with Cryogen is part of its core functionality. You can simply maintain a folder of text files containing Markdown/AsciiDoc content and Cryogen will take care of compiling them into a blog.</p><h2><a name="the&#95;posts&#95;folder"></a>The Posts Folder</h2><p>All of your blog posts should reside under the <code>post-root</code> folder specified in your configuration file. As long as the file contains the proper metadata (discussed later) about the layout of the post followed by valid Markdown/AsciiDoc content, they will be converted into an HTML page.</p><h2><a name="creating&#95;posts"></a>Creating Posts</h2><p>To create a new blog post, all you need to do is create a new Markdown or AsciiDoc file (depending on what you're using - you can only choose one) under your <code>post-root</code> directory. If you are using Markdown then the files should reside under <code>templages/md/{post-root}</code>. If you are using AsciiDoc then the files should reside under <code>templages/asc/{post-root}</code>. You must add a date to your post in one of two ways.</p><p>The first option is to specify the date of the post right in the name of the Markdown file. The way you name these files is important. The date format in your file name must match the date format specified in your <code>config.edn</code> file.</p><p>For example, if your specified date format in your configuration file was <code>dd-MM-yyyy</code>, Cryogen would require your posts to be named in this format:</p><pre><code>dd-MM-yyyy-title.md
 </code></pre><p>If no date format was specified in the configuration file, the default is the ISO 8601 format (yyyy-MM-dd).</p><p>Alternatively, you can leave the date out of the post name and specify it in the metadata of the file under the <code>:date</code> key. The date format must also match the format specified in your <code>config.edn</code> file in this case.</p><p>If your title is more than one word long, it must be separated by dashes.</p><h3><a name="post&#95;contents"></a>Post Contents</h3><p>Every Markdown file representing a post must contain metadata about the title and layout of the post. This is provided as a Clojure map at the beginning of the Markdown file. The following data is required:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>themes/{theme}/html</code>.</td> </tr> </tbody> </table></p><p>These are some optional keys that you may provide:</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td style="width:100px"><code>date</code></td> <td>The date that your post was written. Must follow the date format specified in <code>config.edn</code>. <u>Not</u> optional if you did not include the post date in the file name.</td> </tr> <tr> <td><code>tags</code></td> <td>A vector of strings representing any tags associated with the post.</td> </tr> <tr> <td><code>toc</code></td> <td> Set this to true if you want a table of contents to be generated from the headers/headings in your post. (The default table of contents format is an ordered list. Set this to <code>:ul</code> if you want a bulleted list.) </td> </tr> <tr> <td><code>draft</code></td> <td> Files that have this key set to <code>true</code> will not be included in the compilation process. </td> </tr> </tbody> </table></p><p>The rest of your file should contain valid Markdown content. For example:</p><pre><code>{:title  &quot;First Post!&quot;
  :layout :post
  :date   2016-01-01
@@ -108,7 +107,7 @@
             
         </div>
     </div>
-    <div id="topics-list" class="col-lg-2 col-md-2 col-sm-12">
+    <div id="topics-list" class="col-lg-3 col-md-3 col-sm-12">
         <div id="topics">
             
             <h4>Getting Started</h4>
@@ -130,6 +129,8 @@
                 <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
                 
                 <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                
+                <li><a href="/docs/switching-markdown-asciidoc.html">Switching between Markdown and AsciiDoc</a></li>
                 
                 <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
                 

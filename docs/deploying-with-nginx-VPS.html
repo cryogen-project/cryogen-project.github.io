@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+    <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
           type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
     <link href="../css/screen.css" rel="stylesheet" type="text/css" />
     <script>
         (function (i, s, o, g, r, a, m) {
@@ -62,7 +61,7 @@
         
 
 <div class="row">
-    <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
+    <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
             <h1>Nginx on a VPS</h1>
         </div>
@@ -75,40 +74,40 @@ $ chmod 755 &#126;/site
 </code></pre><p>Next, you'll want to make a backup of the default configuration in /etc/nginx/sites-available/default and replace it with one of the following:</p><h3><a name="configuration&#95;for&#95;sites&#95;with&#95;no&#95;blog-prefix"></a>Configuration for sites with no blog-prefix</h3><pre><code>server {
  listen 80;
 
- root /home/deploy/site;
- index index.html index.htm;
+ root            /home/deploy/site;
+ index           index.html index.htm;
 
- server&#95;name YOURDOMAIN.COM www.YOURDOMAIN.COM;
+ server&#95;name     YOURDOMAIN.COM www.YOURDOMAIN.COM;
 
- access&#95;log /var/log/nginx/access.log;
- error&#95;log /var/log/nginx/error.log;
+ access&#95;log      /var/log/nginx/access.log;
+ error&#95;log       /var/log/nginx/error.log;
 
  location / {
-   default&#95;type &quot;text/html&quot;;
-   alias /home/deploy/site/;
-   try&#95;files $uri.html $uri $uri/ =404;
+   default&#95;type  &quot;text/html&quot;;
+   alias         /home/deploy/site/;
+   try&#95;files     $uri.html $uri $uri/ =404;
    error&#95;page    404 = /404.html;
  }
 }
 </code></pre><p>Simply set <code>YOURDOMAIN.COM</code> to the domain of your site in the configuration and ensure the static content is available at <code>/home/deploy/site/</code>. Finally, place your custom error page in the <code>/home/deploy/site/404.html</code> file.</p><h3><a name="configuration&#95;for&#95;sites&#95;with&#95;a&#95;blog-prefix"></a>Configuration for sites with a blog-prefix</h3><p>If you've provided a <code>blog-prefix</code> in your Cryogen configuration you will have to reflect that in your nginx configuration file.</p><pre><code>server{
  listen 80;
 
- root /home/deploy/site;
- index index.html index.htm;
- error&#95;page    404 = /404.html;
+ root            /home/deploy/site;
+ index           index.html index.htm;
+ error&#95;page      404 = /404.html;
 
- server&#95;name YOURDOMAIN.COM www.YOURDOMAIN.COM;
+ server&#95;name  YOURDOMAIN.COM www.YOURDOMAIN.COM;
 
- access&#95;log /var/log/nginx/access.log;
- error&#95;log /var/log/nginx/error.log;
+ access&#95;log      /var/log/nginx/access.log;
+ error&#95;log       /var/log/nginx/error.log;
 
  location / {
-   default&#95;type &quot;text/html&quot;;
-   try&#95;files $uri.html $uri $uri/ =404;
+   default&#95;type  &quot;text/html&quot;;
+   try&#95;files     $uri.html $uri $uri/ =404;
  }
 
  location /BLOG-PREFIX/ {
-   alias /home/deploy/site/BLOG-PREFIX/;
+   alias         /home/deploy/site/BLOG-PREFIX/;
  }
 }
 </code></pre><p>Simply set <code>YOURDOMAIN.COM</code> to the domain of your site in the configuration and ensure the static content is available at <code>/home/deploy/site/BLOG-PREFIX/</code>. Finally, place your custom error page in the <code>/home/deploy/site/404.html</code> file.</p><p>Once you've changed your nginx configuration file, restart nginx.</p><pre><code>$ sudo service nginx restart
@@ -122,7 +121,7 @@ $ chmod 755 &#126;/site
             
         </div>
     </div>
-    <div id="topics-list" class="col-lg-2 col-md-2 col-sm-12">
+    <div id="topics-list" class="col-lg-3 col-md-3 col-sm-12">
         <div id="topics">
             
             <h4>Getting Started</h4>
@@ -144,6 +143,8 @@ $ chmod 755 &#126;/site
                 <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
                 
                 <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                
+                <li><a href="/docs/switching-markdown-asciidoc.html">Switching between Markdown and AsciiDoc</a></li>
                 
                 <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
                 

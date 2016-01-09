@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Creating Pages</title>
+    <title>Cryogen: Switching between Markdown and AsciiDoc</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/creating-pages.html">
+    <meta name="canonical" content="http://cryogenweb.org/docs/switching-markdown-asciidoc.html">
     
 </head>
 <body>
@@ -63,27 +63,20 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
-            <h1>Creating Pages</h1>
+            <h1>Switching between Markdown and AsciiDoc</h1>
         </div>
         
 
         <div id="content">
-             <p>Creating pages is not much different from writing posts. You're still required to include the map representing the metadata and the page must be written in valid Markdown. </p><h2><a name="the&#95;pages&#95;folder"></a>The Pages Folder</h2><p>Similar to your posts, all of your pages should reside under the <code>page-root</code> folder specified in your configuration file. Again, as long as the file contains the proper metadata followed by valid Markdown content, they will be converted into an HTML page. </p><h2><a name="creating&#95;pages"></a>Creating Pages</h2><p>To create a new page, just make a new Markdown/AsciiDoc file under your <code>page-root</code>. You don't need to include a date in the file name or in the metadata like you did a post but words should still be dash-separated and the file must have a <code>.md</code> or <code>.asc</code> extension. For example:</p><pre><code>about.md
-my-projects.md
-contact-me.asc
-</code></pre><h3><a name="page&#95;contents"></a>Page Contents</h3><p>The following information is mandatory in your page metadata.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>title</code></td> <td>Your post title provided as a string.</td> </tr> <tr> <td><code>layout</code></td> <td>A keyword corresponding to an HTML file under <code>themes/{theme}/html</code>.</td> </tr> <tr> <td><code>page-index</code></td> <td>Because pages can be linked up with previous/next links, this is how they get sorted.</td> </tr> <tr> <td><code>navbar?</code></td> <td>Set this to true if you want the link to this page to appear in the navbar. Set it to false if you want it in the sidebar.</td> </tr> </tbody> </table></p><p>For example:</p><pre><code>{:title      &quot;Check out this page!&quot;
- :layout     :page
- :page-index 0
- :navbar?    false}
-</code></pre><h3><a name="images&#95;in&#95;your&#95;pages"></a>Images in Your Pages</h3><p>You can include images in your pages in the same way you include images in your blog posts. Please refer to the "Including Images in Posts" and "Images in Markdown" sections of the <a href='/docs/writing-posts.html'>Writing Posts</a> page.</p><h3><a name="highlighting&#95;code&#95;snippets"></a>Highlighting Code Snippets</h3><p>Want to show off your code in a page? It works the same way as it does in posts. Just wrap your code block in triple backticks and highlight.js will take care of the rest.</p>
+            <p> Cryogen comes with <a href='https://daringfireball.net/projects/markdown/'>Markdown</a> support by default and you can only use one or the other.</p><p> If you want to use <a href='http://asciidoctor.org/docs/what-is-asciidoc/'>AsciiDoc</a> instead of Markdown, open the <code>project.clj</code> in your created blog and change the line in <code>:dependencies</code> that says <code>cryogen-markdown</code> to <code>cryogen-asciidoc</code>.  Instead of looking for files ending in <code>.md</code> in the <code>templates/md</code> directory, the compiler will now look for files ending in <code>.asc</code> in the <code>templates/asc</code> directory.</p>
         </div>
 
         <div id="prev-next">
             
-            <a class="left" href="/docs/writing-posts.html">&laquo; Prev</a>
+            <a class="left" href="/docs/creating-pages.html">&laquo; Prev</a>
             
             
-            <a class="right" href="/docs/switching-markdown-asciidoc.html">Next &raquo;</a>
+            <a class="right" href="/docs/customizing-the-index.html">Next &raquo;</a>
             
         </div>
     </div>

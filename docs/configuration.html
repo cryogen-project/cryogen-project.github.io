@@ -7,10 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
-    <link href='http://fonts.googleapis.com/css?family=Alegreya:400italic,700italic,400,700' rel='stylesheet'
+    <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
           type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic' rel='stylesheet'
-          type='text/css'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
     <link href="../css/screen.css" rel="stylesheet" type="text/css" />
     <script>
         (function (i, s, o, g, r, a, m) {
@@ -62,7 +61,7 @@
         
 
 <div class="row">
-    <div id="reading-pane" class="col-lg-10 col-md-10 col-sm-12">
+    <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
             <h1>Configuration</h1>
         </div>
@@ -74,8 +73,10 @@
  :description        &quot;This blog is awesome&quot;
  :site-url           &quot;http://blogawesome.com/&quot;
  :post-root          &quot;posts&quot;
- :tag-root           &quot;tags&quot;
  :page-root          &quot;pages&quot;
+ :post-root-uri      &quot;posts-output&quot;
+ :page-root-uri      &quot;pages-output&quot;
+ :tag-root-uri       &quot;tags-output&quot;
  :blog-prefix        &quot;/blog&quot;
  :rss-name           &quot;feed.xml&quot;
  :rss-filters        &#91;&quot;cryogen&quot;&#93;
@@ -92,7 +93,7 @@
  :posts-per-page     5
  :blocks-per-preview 2
  :previews?          false}
-</code></pre><h2><a name="your&#95;options"></a>Your options</h2><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td style="width:200px"><code>site-title</code></td> <td>Your site's title</td> </tr> <tr> <td><code>author</code></td> <td>Your name goes here!</td> </tr> <tr> <td><code>description</code></td> <td>A blurb describing your site</td> </tr> <tr> <td><code>site-url</code></td> <td>Your site's root url. All of the above values are used when generating your sitemap and RSS feed.</td> </tr> <tr> <td><code>post-root</code></td> <td>The folder where the compiler will look for blog posts. This value is prepended to all post uri's. Must be provided. </td> </tr> <tr> <td><code>tag-root</code></td> <td>This value is prepended to all tag page uri's. Must be provided.</td> </tr> <tr> <td><code>page-root</code></td> <td>The folder where the compiler will look for your custom pages. This value is prepended to all page uri's. Must be provided. </td> </tr> <tr> <td><code>blog-prefix</code></td> <td>Prepended to all uri's. This must start with a slash.</td> </tr> <tr> <td><code>rss-name</code></td> <td>The name of the rss file generated, nil defaults to rss.xml.</td> </tr> <tr> <td><code>rss-filters</code></td> <td>Specific tags for which you want to create a separate RSS feed for</td> </tr> <tr> <td><code>recent-posts</code></td> <td>The maximum number of recent posts to show in the sidebar.</td> </tr> <tr> <td><code>post-date-format</code></td> <td>Set the date format that you want to use for the names of your .md files representing your posts; nil defaults to yyyy-MM-dd.</td> </tr> <tr> <td><code>sass-src</code></td> <td>Directory containing sass(scss) files to be compiled; nil defaults to "css". Be sure to include this directory in your resources section.</td> </tr> <tr> <td><code>sass-dest</code></td> <td>Directory where the compiled sass would be spit out; nil defaults to "css". Be sure to include this directory in your resources section.</td> </tr> <tr> <td><code>theme</code></td> <td>Set this to the theme you wish to deliver from the <code>themes</code> directory. You can add your own theme to this folder along with the current <code>blue</code> and <code>blue&#95;centered</code> themes. Must be provided.</td> </tr> <tr> <td><code>resources</code></td> <td>A vector of directories/files to be copied over from <code>templates</code> to <code>public</code> upon compilation.</td> </tr> <tr> <td><code>keep-files</code></td> <td>When wiping the <code>public</code> folder, keep the listed directories/files; eg. you would want to keep your <code>.git</code> folder if you plan on publishing to Github Pages from the <code>public</code> folder.</td> </tr> <tr> <td><code>disqus?</code></td> <td>Set this to <code>true</code> if you want Disqus enabled on your site; nil defaults to <code>false</code>.</td> </tr> <tr> <td><code>disqus-shortname</code></td> <td>Your Disqus shortname</td> </tr> <tr> <td><code>ignored-files</code></td> <td>Regexes matching files that you want to ignore during compilation. Ex: emacs interlock files.</td> </tr> <tr> <td><code>post-per-page</code></td> <td>If post previews are enabled then this is the maximum number of previews on a page.</td> </tr> <tr> <td><code>blocks-per-preview</code></td> <td>The default number of (html) blocks to display per post preview. This can be overwritten by adding <code>&lt;!--more--&gt;</code> to your .md or .asc file to indicate where you'd like to break off your post.</td> </tr> <tr> <td><code>previews?</code></td> <td>Set this to <code>true</code> if you would like to display a list of recent posts rather than a full, single post on your home page. Discussed <a href='/docs/customizing-the-index.html'>here</a>.</td> </tr> <tr> </tr> </tbody> </table></p><p>In addition to these default configuration options, you may add your own custom values. For example, if your blog has a subtitle that you'd like to display on your site:</p><ol><li>Add <code>:subtitle &quot;My subtitle&quot;</code> to the config file</li><li>Inject the value into your templates via Selmer using <code>{% subtitle %}</code></li></ol>
+</code></pre><h2><a name="your&#95;options"></a>Your options</h2><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td style="width:150px"><code>site-title</code></td> <td>Your site's title</td> </tr> <tr> <td><code>author</code></td> <td>Your name goes here!</td> </tr> <tr> <td><code>description</code></td> <td>A blurb describing your site</td> </tr> <tr> <td><code>site-url</code></td> <td>Your site's root url. This, along with all of the above values are used when generating your sitemap and RSS feed.</td> </tr> <tr> <td><code>post-root</code></td> <td>The folder where the compiler will look for blog posts. Must be provided. </td> </tr> <tr> <td><code>page-root</code></td> <td>The folder where the compiler will look for your custom pages. Must be provided. </td> </tr> <tr> <td><code>post-root-uri</code></td> <td>The folder where the compiler will output compiled blog posts. This value is prepended to all post uri's. If this value is <code>nil</code> then the name of the output folder will be the same as the <code>post-root</code> folder. If the empty string ("") is provided then the posts will be outputted to the root folder of the blog (ie. <code>resources/public/{blog-prefix}</code>). </td> </tr> <tr> <tr> <td><code>page-root-uri</code></td> <td>The folder where the compiler will output compiled pages. This value is prepended to all page uri's. If this value is <code>nil</code> then the name of the output folder will be the same as the <code>page-root</code> folder. If the empty string ("") is provided then the posts will be outputted to the root folder of the blog. </td> </tr> <td><code>tag-root-uri</code></td> <td>The folder where the compiler will output compiled tag pages. This value is prepended to all tag page uri's. If no value is provided then the empty string will be used.</td> </tr> <tr> <td><code>blog-prefix</code></td> <td>Prepended to all uri's. This must start with a slash.</td> </tr> <tr> <td><code>rss-name</code></td> <td>The name of the rss file generated, nil defaults to rss.xml.</td> </tr> <tr> <td><code>rss-filters</code></td> <td>Specific tags for which you want to create a separate RSS feed.</td> </tr> <tr> <td><code>recent-posts</code></td> <td>The maximum number of recent posts to show in the sidebar.</td> </tr> <tr> <td><code>post-date-format</code></td> <td>Set the date format that you want to use for the names of your .md files representing your posts; nil defaults to yyyy-MM-dd.</td> </tr> <tr> <td><code>sass-src</code></td> <td>Directory containing sass(scss) files to be compiled; nil defaults to "css". Be sure to include this directory in your resources section.</td> </tr> <tr> <td><code>sass-dest</code></td> <td>Directory where the compiled sass would be spit out; nil defaults to "css". Be sure to include this directory in your resources section.</td> </tr> <tr> <td><code>theme</code></td> <td>Set this to the theme you wish to deliver from the <code>themes</code> directory. You can add your own theme to this folder along with the current <code>blue</code> and <code>blue&#95;centered</code> themes. Must be provided.</td> </tr> <tr> <td><code>resources</code></td> <td>A vector of directories/files to be copied over from <code>templates</code> to <code>public</code> upon compilation.</td> </tr> <tr> <td><code>keep-files</code></td> <td>When wiping the <code>public</code> folder, keep the listed directories/files; eg. you would want to keep your <code>.git</code> folder if you plan on publishing to Github Pages from the <code>public</code> folder.</td> </tr> <tr> <td><code>disqus?</code></td> <td>Set this to <code>true</code> if you want Disqus enabled on your site; nil defaults to <code>false</code>.</td> </tr> <tr> <td><code>disqus-shortname</code></td> <td>Your Disqus shortname.</td> </tr> <tr> <td><code>ignored-files</code></td> <td>Regexes matching files that you want to ignore during compilation. Ex: emacs interlock files.</td> </tr> <tr> <td><code>post-per-page</code></td> <td>If post previews are enabled then this is the maximum number of previews on a page.</td> </tr> <tr> <td><code>blocks-per-preview</code></td> <td>The default number of (html) blocks to display per post preview. This can be overwritten by adding <code>&lt;!--more--&gt;</code> to your .md or .asc file to indicate where you'd like to break off your post.</td> </tr> <tr> <td><code>previews?</code></td> <td>Set this to <code>true</code> if you would like to display a list of recent posts rather than a full, single post on your home page. Discussed <a href='/docs/customizing-the-index.html'>here</a>.</td> </tr> <tr> </tr> </tbody> </table></p><p>In addition to these default configuration options, you may add your own custom values. For example, if your blog has a subtitle that you'd like to display on your site:</p><ol><li>Add <code>:subtitle &quot;My subtitle&quot;</code> to the config file</li><li>Inject the value into your templates via Selmer using <code>{% subtitle %}</code></li></ol>
         </div>
 
         <div id="prev-next">
@@ -104,7 +105,7 @@
             
         </div>
     </div>
-    <div id="topics-list" class="col-lg-2 col-md-2 col-sm-12">
+    <div id="topics-list" class="col-lg-3 col-md-3 col-sm-12">
         <div id="topics">
             
             <h4>Getting Started</h4>
@@ -126,6 +127,8 @@
                 <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
                 
                 <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                
+                <li><a href="/docs/switching-markdown-asciidoc.html">Switching between Markdown and AsciiDoc</a></li>
                 
                 <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
                 
