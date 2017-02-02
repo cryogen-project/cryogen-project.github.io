@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Getting Started</title>
+    <title>Cryogen: Klipse Integration</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/getting-started.html">
+    <meta name="canonical" content="http://cryogenweb.org/docs/klipse.html">
     
 </head>
 <body>
@@ -63,23 +63,65 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
-            <h1>Getting Started</h1>
+            <h1>Klipse Integration</h1>
         </div>
+        
+        <div id="toc"><ol class="contents"><li><a href="#configuration">Configuration</a></li><li><a href="#examples">Examples</a></li><ol><li><a href="#basic_config">Basic config</a></li><li><a href="#more_advanced_config">More advanced config</a></li></ol></div>
         
 
         <div id="content">
-            <p>Cryogen aims to be as simple as possible. There's no need to set up a database or jump through hoops just to get a boilerplate template going.</p><p>To get started, you'll need to have <a href='http://leiningen.org/'>Leiningen</a> installed. Once you have that ready, here's how to get the base template.</p><pre><code>&#126; $ lein new cryogen my-blog
-&#126; $ cd my-blog
-&#126;/my-blog $ lein ring server
-</code></pre><p>Once the server starts, you can visit your site at <code>localhost:3000</code>. The first thing you'll see is a helpful README on what to do next.</p>
+            <p><a href='https://github.com/viebel/klipse'>Klipse</a> is a javascript plugin that transforms static code snippets of an html page into live and interactive snippets. making code snippets on a web page interactive. Visitors can edit the snippets and they are evaluated continuously as they type.</p><p>In Cryogen you can integrate Klipse in your blog with minimal effort. To get started, configure the Klipse plugin in <code>config.edn</code> and set <code>:klipse</code> to <code>true</code> in the post or page metadata. Alternatively you can override parts of the global configuration by passing a configuration map containing the desired changes to the <code>:klipse</code> key in the post/page metadata.</p><h2 id="configuration">Configuration</h2><p>The configuration is a map that may include the following keys.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>settings</code></td> <td>Contains a clojure map that's passed to <code>window.klipse&#95;settings</code>. All the settings are documented <a href='https://github.com/viebel/klipse#configuration'>here</a>. (In cryogen you can use <code>:lisp-cased-keywords</code> instead of <code>&quot;snake&#95;cased&quot;</code>/<code>&quot;camelCased&quot;</code> strings.) </td> </tr> <tr> <td><code>js-src</code></td> <td>A map with the keys <code>:min</code> and <code>:non-min</code>. These are uris that point to the minified and non-minified version of the Klipse plugin. They default to the plugin hosted by Klipse, but to host it yourself, just set the appropriate uris. </td> </tr> <tr> <td><code>js</code></td> <td>Can be either <code>:min</code> or <code>:non-min</code>. Self-hosted clojurescript is not (yet?) compatible with advanced compilation, so if a post has cljs snippets, it needs to use the non-minified version, but any other languages can use the minified version. <br><br> Cryogen will infer this based on the setting and the classes in the code blocks in each post, so normally you don't need to worry about it. Can be overridden if necessary.</td> </tr> <tr> <td><code>css-base</code></td> <td>The uri to the codemirror css that is used by Klipse. As with <code>:js-src</code>, it defaults to css hosted by Klipse and you can override it if you want to host it yourself.</td> </tr> <tr> <td><code>css-theme</code></td> <td>You can also use a codemirror theme for the snippets, just set this to a uri pointing to one.</td> </tr> </tbody> </table></p><h2 id="examples">Examples</h2><h3 id="basic&#95;config">Basic config</h3><p>This config is all you need to write code blocks with live vanilla ClojureScript, Reagent and/or Ruby evaluation.</p><p><code>config.edn</code></p><pre><code>{...
+:hide-future-posts? true
+
+:klipse {:settings {:selector &quot;.klipse-cljs&quot;
+                    :selector-reagent &quot;.klipse-reagent&quot;
+                    :selector-eval-ruby &quot;.klipse-ruby&quot;}}
+
+:debug? false}
+</code></pre><p><code>hello-world.md</code></p><pre><code>{:title &quot;A post&quot;
+ :layout :post
+ :date &quot;2017-01-19&quot;
+ :klipse true
+ :tags &#91;&quot;cljs&quot;&#93;}
+
+## Hello world!
+
+```klipse-cljs
+&#40;map #&#40;&#42; % %&#41; &#40;range 10&#41;&#41;
+```</code></pre><h3 id="more&#95;advanced&#95;config">More advanced config</h3><p>This one has some more configuration to show how you can override settings in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
+:hide-future-posts? true
+
+:klipse {:settings {:selector &quot;.klipse-cljs&quot;
+                    :selector-reagent &quot;.klipse-reagent&quot;
+                    :selector-eval-ruby &quot;.klipse-ruby&quot;
+                    :codemirror-options-in {:line-numbers true}
+                    :codemirror-options-out {:line-numbers true}}
+         ;; Set a css theme for the code snippets.
+         :css-theme &quot;/css/some-codemirror-theme.css&quot;}
+
+:debug? false}
+</code></pre><p><code>hello-world.md</code></p><pre><code>{:title &quot;A post&quot;
+ :layout :post
+ :date &quot;2017-01-19&quot;
+
+ ;; Override config.edn and turn off line numbers for snippet output.
+ :klipse {:settings {:codemirror-options-out {:line-numbers false}}}
+
+ :tags &#91;&quot;cljs&quot;&#93;}
+
+## Hello world!
+
+```klipse-ruby
+&#40;0...10&#41;.map {|i| i &#42; i}
+```</code></pre>
         </div>
 
         <div id="prev-next">
             
-            <a class="left" href="/docs/home.html">&laquo; Prev</a>
+            <a class="left" href="/docs/customizing-the-index.html">&laquo; Prev</a>
             
             
-            <a class="right" href="/docs/structure.html">Next &raquo;</a>
+            <a class="right" href="/docs/deploying-to-github-pages.html">Next &raquo;</a>
             
         </div>
     </div>
