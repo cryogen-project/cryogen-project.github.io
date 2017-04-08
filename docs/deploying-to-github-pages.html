@@ -82,7 +82,9 @@ $ git rm -rf .
 </code></pre><h2 id="deploying&#95;to&#95;github&#95;pages">Deploying to GitHub Pages</h2><p>Once you've set up your repository for the type of GitHub Page that you want, copy over all your files and folders under the root directory of your site - <code>public</code> if you're creating a user page; <code>public/YOUR-PROJECT-REPO-NAME</code> if you're creating a project page.</p><p>The last step is to push your content to GitHub.</p><pre><code>$ git add &#42;
 $ git commit -a -m &quot;Initial page commit&quot;
 $ git push origin gh-pages
-</code></pre><p>If you make any changes to your site, simply follow this deployment step to update your GitHub Page.</p>
+</code></pre><p>If you make any changes to your site, simply follow this deployment step to update your GitHub Page.</p><h2 id="configuring&#95;custom&#95;domain&#95;names&#95;(cname)">Configuring Custom Domain Names (CNAME)</h2><p>If you'd like to use a custom domain, GitHub supports this by configuring a <code>CNAME</code> file in the root of your repository. You'll need to acquire a domain from a registrar and then setup either a <code>CNAME</code> record or an <code>A</code> record pointing to GitHub. GitHub has documentation <a href='https://help.github.com/articles/quick-start-setting-up-a-custom-domain/'>here</a> that details the difference.</p><p>For the Cryogen part, create a file called <code>CNAME</code> at <code>resources/templates/CNAME</code> with contents similar to this:</p><pre><code>cryogenweb.org
+</code></pre><p>Now edit your <code>config.edn</code> and add <code>CNAME</code> to your <code>:resources</code>:</p><pre><code class="clojure">:resources &#91;&quot;img&quot; &quot;CNAME&quot;&#93;
+</code></pre><p>Now when you build, your CNAME file should be copied into your <code>resources/public/</code> folder.</p>
         </div>
 
         <div id="prev-next">
