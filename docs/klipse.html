@@ -82,11 +82,7 @@
  :layout :post
  :date &quot;2017-01-19&quot;
  :klipse true
- :tags &#91;&quot;cljs&quot;&#93;}
-
-## Hello world!
-
-```klipse-cljs
+ :tags &#91;&quot;cljs&quot;&#93;}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-cljs
 &#40;map #&#40;&#42; % %&#41; &#40;range 10&#41;&#41;
 ```</code></pre><h3 id="more&#95;advanced&#95;config">More advanced config</h3><p>This one has some more configuration to show how you can override settings in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
 :hide-future-posts? true
@@ -102,16 +98,8 @@
 :debug? false}
 </code></pre><p><code>hello-world.md</code></p><pre><code>{:title &quot;A post&quot;
  :layout :post
- :date &quot;2017-01-19&quot;
-
- ;; Override config.edn and turn off line numbers for snippet output.
- :klipse {:settings {:codemirror-options-out {:line-numbers false}}}
-
- :tags &#91;&quot;cljs&quot;&#93;}
-
-## Hello world!
-
-```klipse-ruby
+ :date &quot;2017-01-19&quot;</code></pre><pre><code> ;; Override config.edn and turn off line numbers for snippet output.
+ :klipse {:settings {:codemirror-options-out {:line-numbers false}}}</code></pre><pre><code> :tags &#91;&quot;cljs&quot;&#93;}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-ruby
 &#40;0...10&#41;.map {|i| i &#42; i}
 ```</code></pre>
         </div>
