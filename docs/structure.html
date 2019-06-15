@@ -69,50 +69,49 @@
 
         <div id="content">
              <p>A basic Cryogen site usually looks something like this: (New files may be added in the future)</p><pre><code>my-blog
-├── resources
-│   ├── public
-│   │   ⋮
-│   └── templates
-│       ├── asc
-│       │   ├── pages
-│       │   │   └── adoc-page.asc
-│       │   └── posts
-│       │       └── 2014-10-10-adoc-post.asc
-│       ├── md
-│       │   ├── pages
-│       │   │   ├── about.md
-│       │   │   └── another-page.md
-│       │   └── posts
-│       │       ├── 2014-03-10-first-post.md
-│       │       ├── 2014-11-04-second-post.md
-│       │       └── 2014-12-11-docs.md
-│       ├── img
-│       ├── themes
-│       │   ├── blue
-│       │   │   ├── css
-│       │   │   │   └── screen.css
-│       │   │   ├── html
-│       │   │   │   ├── 404.html
-│       │   │   │   ├── archives.html
-│       │   │   │   ├── base.html
-│       │   │   │   ├── home.html
-│       │   │   │   ├── page.html
-│       │   │   │   ├── post-content.html
-│       │   │   │   ├── post.html
-│       │   │   │   ├── previews.html
-│       │   │   │   ├── tag.html
-│       │   │   │   └── tags.html
-│       │   │   └── js
-│       │   │       └── highlight.pack.js
-│       │   └── blue&#95;centered
-│       │       ⋮
-│       ├── config.edn
+├── content
+│   ├── asc
+│   │   ├── pages
+│   │   │   └── adoc-page.asc
+│   │   └── posts
+│   │       └── 2014-10-10-adoc-post.asc
+│   ├── md
+│   │   ├── pages
+│   │   │   ├── about.md
+│   │   │   └── another-page.md
+│   │   └── posts
+│   │       ├── 2014-03-10-first-post.md
+│   │       ├── 2014-11-04-second-post.md
+│   │       └── 2014-12-11-docs.md
+│   ├── img
+│   └── config.edn
+├── public
+│   ⋮
 ├── src
 │   └── cryogen
 │       ├── core.clj
-│       └── server.clj       
+│       └── server.clj
+├── themes
+│   ├── blue
+│   │   ├── css
+│   │   │   └── screen.css
+│   │   ├── html
+│   │   │   ├── 404.html
+│   │   │   ├── archives.html
+│   │   │   ├── base.html
+│   │   │   ├── home.html
+│   │   │   ├── page.html
+│   │   │   ├── post-content.html
+│   │   │   ├── post.html
+│   │   │   ├── previews.html
+│   │   │   ├── tag.html
+│   │   │   └── tags.html
+│   │   └── js
+│   │       └── highlight.pack.js
+│   └── blue&#95;centered
+│       ⋮
 └── project.clj
-</code></pre><p><table class="table table-bordered"> <thead> <tr> <th>File/Dir</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>resources</code></td> <td>This is where all of your site content and configuration will go. It's divided into the <code>templates</code> folder and the <code>public</code> folder.</td> </tr> <tr> <td><code>public</code></td> <td>This is where the generated site will go once Cryogen is done compiling your content.</td> </tr> <tr> <td><code>templates</code></td> <td>The main folder where all your HTML themes and Markdown/AsciiDoc content will go.</td> </tr> <tr> <td><code>asc</code></td> <td>If you are using AsciiDoc then keep your content here. </td> </tr> <tr> <td><code>md</code></td> <td>If you are using Markdown then keep your content here. </td> </tr> <tr> <td><code>pages</code></td> <td>The root folder for all your custom Markdown/Asciidoc pages. This folder name can be changed in config.edn.</td> </tr> <tr> <td><code>posts</code></td> <td>The root folder for all your post content in Markdown/Asciidoc. This folder name can also be changed.</td> </tr> <tr> <td><code>img</code></td> <td>The default directory to place images.</td> </tr> <tr> <td><code>themes</code></td> <td>This directory contains themes that you may apply to your site. You may use a theme by specifying its name under the <code>theme</code> key in <code>config.edn</code>.</td> </tr> <tr> <td><code>themes/{theme}/css</code></td> <td>Pretty self explanatory. Put your theme's css files here</td> </tr> <tr> <td><code>themes/{theme}/html</code></td> <td>These are the templates that wrap posts and pages. Layouts are selected on a post-by-post basis and content gets injected by Selmer. </td> </tr> <tr> <td><code>themes/{theme}/js</code></td> <td>Also self explanatory. The theme's JavaScript files go here.</td> </tr> <tr> <td><code>config.edn</code></td> <td>Configuration data for your site.</td> </tr> <tr> <td><code>src/cryogen</code></td> <td>Contains the core and server.</td> </tr> <tr> <td><code>project.clj</code></td> <td>Your typical project file for a Clojure project.</td> </tr> </tbody> </table></p><p>The html templates use <a href='https://github.com/yogthos/Selmer'>Selmer</a> which can extend other templates. Most html templates extend off of <code>base.html</code>. The following diagram gives an overview of the Cryogen Selmer hierachy.</p><p><img src="/img/selmer-hierachy.png" alt="Selmer Hierachy" /></p><p>Markdown/AsciiDoc content is injected into their specified layout files and then injected into the base html layout to create each page of your site.<br /></p>
+</code></pre><p><table class="table table-bordered"> <thead> <tr> <th>File/Dir</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>public</code></td> <td>This is where the generated site will go once Cryogen is done compiling your content.</td> </tr> <tr> <td><code>content</code></td> <td>The main folder where all your Markdown/AsciiDoc content and other resources will go.</td> </tr> <tr> <td><code>asc</code></td> <td>If you are using AsciiDoc then keep your content here. </td> </tr> <tr> <td><code>md</code></td> <td>If you are using Markdown then keep your content here. </td> </tr> <tr> <td><code>pages</code></td> <td>The root folder for all your custom Markdown/Asciidoc pages. This folder name can be changed in config.edn.</td> </tr> <tr> <td><code>posts</code></td> <td>The root folder for all your post content in Markdown/Asciidoc. This folder name can also be changed.</td> </tr> <tr> <td><code>img</code></td> <td>The default directory to place images.</td> </tr> <tr> <td><code>themes</code></td> <td>This directory contains themes that you may apply to your site. You may use a theme by specifying its name under the <code>theme</code> key in <code>config.edn</code>.</td> </tr> <tr> <td><code>themes/{theme}/css</code></td> <td>Pretty self explanatory. Put your theme's css files here</td> </tr> <tr> <td><code>themes/{theme}/html</code></td> <td>These are the templates that wrap posts and pages. Layouts are selected on a post-by-post basis and content gets injected by Selmer. </td> </tr> <tr> <td><code>themes/{theme}/js</code></td> <td>Also self explanatory. The theme's JavaScript files go here.</td> </tr> <tr> <td><code>config.edn</code></td> <td>Configuration data for your site.</td> </tr> <tr> <td><code>src/cryogen</code></td> <td>Contains the core and server.</td> </tr> <tr> <td><code>project.clj</code></td> <td>Your typical project file for a Clojure project.</td> </tr> </tbody> </table></p><p>The html templates use <a href='https://github.com/yogthos/Selmer'>Selmer</a> which can extend other templates. Most html templates extend off of <code>base.html</code>. The following diagram gives an overview of the Cryogen Selmer hierachy.</p><p><img src="/img/selmer-hierachy.png" alt="Selmer Hierachy" /></p><p>Markdown/AsciiDoc content is injected into their specified layout files and then injected into the base html layout to create each page of your site.<br /></p>
         </div>
 
         <div id="prev-next">
