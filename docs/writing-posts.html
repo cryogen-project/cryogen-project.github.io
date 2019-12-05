@@ -66,7 +66,7 @@
             <h1>Writing Posts</h1>
         </div>
         
-        <div id="toc"><ol class="contents"><li><a href="#the_posts_folder">The Posts Folder</a></li><li><a href="#creating_posts">Creating Posts</a></li><ol><li><a href="#post_contents">Post Contents</a></li><li><a href="#multiple_authors">Multiple Authors</a></li><li><a href="#tags">Tags</a></li><li><a href="#including_images_in_posts">Including Images in Posts</a></li><li><a href="#images_and_markdown">Images and Markdown</a></li><li><a href="#highlighting_code_snippets">Highlighting Code Snippets</a></li><li><a href="#disqus_integration">Disqus Integration</a></li></ol><li><a href="#post_archives">Post Archives</a></li></ol></div>
+        <div id="toc"><ol class="contents"><li><a href="#the_posts_folder">The Posts Folder</a></li><li><a href="#creating_posts">Creating Posts</a></li><ol><li><a href="#post_contents">Post Contents</a></li><li><a href="#multiple_authors">Multiple Authors</a></li><li><a href="#tags">Tags</a></li><li><a href="#including_images_in_posts">Including Images in Posts</a></li><li><a href="#images_and_markdown">Images and Markdown</a></li><li><a href="#linking_to_other_posts_or_pages">Linking to other Posts or Pages</a></li><li><a href="#highlighting_code_snippets">Highlighting Code Snippets</a></li><li><a href="#disqus_integration">Disqus Integration</a></li></ol><li><a href="#post_archives">Post Archives</a></li></ol></div>
         
 
         <div id="content">
@@ -98,6 +98,8 @@
 </code></pre><p>If you'd like to organize your posts in this fashion, please keep in mind that the images under the specific post folder will be copied over to <code>public/img</code> when your site gets compiled so please link to these images in the same fashion described below.</p><h3 id="images&#95;and&#95;markdown">Images and Markdown</h3><p>All images should be included in your Markdown content in the following format. (If <code>img</code> were a folder that you created under <code>content</code>.)</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
 </code></pre><p>If you have a prefix such as <code>/blog</code> specified in your <code>config.edn</code> Cryogen will prepend it to any local images that you include in your posts. So this</p><pre><code>!&#91;Image 1&#93;&#40;/img/img01.png&#41;
 </code></pre><p>will be compiled into this:</p><pre><code>&lt;img src=&quot;/blog/img/img01.png&quot;&gt;
+</code></pre><h3 id="linking&#95;to&#95;other&#95;posts&#95;or&#95;pages">Linking to other Posts or Pages</h3><p>If you include local links to your other pages or posts, Cryogen will preprend your blog prefix the same way it does with images. So this</p><pre><code>&#91;Check out my bio&#93;&#40;/pages/about-me&#41;
+</code></pre><p>will be compiled into this</p><pre><code>&lt;a href=&quot;/blog/pages/about-me&quot;&gt;Check out my bio&lt;/a&gt;
 </code></pre><h3 id="highlighting&#95;code&#95;snippets">Highlighting Code Snippets</h3><p>Cryogen uses <a href='https://highlightjs.org/'>highlight.js</a> to support syntax highlighting for code snippets you wish to include in your posts or pages. Code blocks should be wrapped with triple backticks (```)  and highlight.js will automatically detect the language and handle the syntax colours. If you want to specify the language, simply do so after the first triple backtick.</p><h3 id="disqus&#95;integration">Disqus Integration</h3><p>If you wish to enable comments on your posts, create a <a href='https://disqus.com/'>disqus</a> account and <a href='https://disqus.com/admin/create/'>register</a> your blog. <code>disqus?</code> should be set to <code>true</code> in the config and you must add your <code>disqus-shortname</code> as well.</p><h2 id="post&#95;archives">Post Archives</h2><p>Cryogen will automatically generate and update a post archives page for you. If you'd like to change the layout of this page, you can do so by editing the HTML in <code>themes/{theme}/html/archives.html</code>.</p>
         </div>
 
@@ -147,6 +149,13 @@
                 <li><a href="/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
                 
                 <li><a href="/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
+                
+            </ul>
+            
+            <h4>Additional Resources</h4>
+            <ul>
+                
+                <li><a href="/docs/automating-with-travis.html">Automating deployment with Travis</a></li>
                 
             </ul>
             
