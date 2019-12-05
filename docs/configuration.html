@@ -66,7 +66,7 @@
             <h1>Configuration</h1>
         </div>
         
-        <div id="toc"><ol class="contents"><li><a href="#your_options">Your Options</a></li><ol><li><a href="#details">Details</a></li><li><a href="#custom_values">Custom Values</a></li></ol><li><a href="#advanced_configuration">Advanced Configuration</a></li></ol></div>
+        <div id="toc"><ol class="contents"><li><a href="#your_options">Your Options</a></li><ol><li><a href="#details">Details</a></li><li><a href="#custom_values">Custom Values</a></li></ol><li><a href="#advanced_configuration">Advanced Configuration</a></li><ol><li><a href="#deriving_params">Deriving Params</a></li></ol></div>
         
 
         <div id="content">
@@ -124,6 +124,13 @@
        &#40;start-watcher! &quot;content&quot; ignored-files &#40;partial compile-assets-timed overrides&#41;&#41;
        &#40;start-watcher! &quot;themes&quot; ignored-files &#40;partial compile-assets-timed overrides&#41;&#41;&#41;&#41;&#41;
 ;; ...
+</code></pre><h3 id="deriving&#95;params">Deriving Params</h3><p>If you wish to further derive more parameters from the data that the cryogen compiler generates, you may pass in a <code>:extend-params-fn</code> in your overrides map which will be invoked by the compiler like so</p><pre><code class="clojure">&#40;&#40;:extend-params-fn overrides&#41;
+  params
+  {:posts posts
+   :pages pages
+   :posts-by-tag posts-by-tag
+   :navbar-pages navbar-pages
+   :sidebar-pages sidebar-pages}&#41;
 </code></pre>
         </div>
 
