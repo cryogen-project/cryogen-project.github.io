@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Switching between Markdown and AsciiDoc</title>
+    <title>Cryogen: Customizing/Extending Cryogen</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/switching-markdown-asciidoc.html">
+    <meta name="canonical" content="http://cryogenweb.org/docs/customizing-cryogen.html">
     
 </head>
 <body>
@@ -63,20 +63,20 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
-            <h1>Switching between Markdown and AsciiDoc</h1>
+            <h1>Customizing/Extending Cryogen</h1>
         </div>
+        
+        <div id="toc"><ol class="contents"><li><a href="#extra_parameters_for_your_selmer_templates">Extra parameters for your Selmer templates</a></li><li><a href="#extra_pages_/_posts">Extra pages / posts</a></li><li><a href="#customizing_the_code">Customizing the code</a></li></ol></div>
         
 
         <div id="content">
-            <p> Cryogen comes with <a href='https://daringfireball.net/projects/markdown/'>Markdown</a> support by default and you can only use one or the other.</p><p> If you want to use <a href='http://asciidoctor.org/docs/what-is-asciidoc/'>AsciiDoc</a> instead of Markdown, open the <code>project.clj</code> in your created blog and change the line in <code>:dependencies</code> that says <code>cryogen-markdown</code> to <code>cryogen-asciidoc</code>.  Instead of looking for files ending in <code>.md</code> in the <code>content/md</code> directory, the compiler will now look for files ending in <code>.asc</code> in the <code>content/asc</code> directory.</p>
+            <p>If the malleability provided by the <a href='configuration.html'>configuration</a> and templates isn't enough for your needs, here are your options.</p><h3 id="extra&#95;parameters&#95;for&#95;your&#95;selmer&#95;templates">Extra parameters for your Selmer templates</h3><p>You can invoke <a href='https://github.com/cryogen-project/cryogen-core/blob/master/src/cryogen_core/compiler.clj'><code>cryogen-core.compiler/compile-assets-timed</code></a> with a custom <code>config</code> that:</p><ol><li>Can override any settings from <code>config.edn</code></li><li>Add any additional parameters that will be made available to your pages (ex.: <code>{{my-custom-key}}</code>)</li><li>Provide under <code>:extend-params-fn</code> a function of the signature <code>&#40;fn &#91;params site-data&#93; params&#41;</code>   that can leverage all the available <code>params</code> (the data eventually passed to Selmer) and the   provided <code>site-data</code> to derive modified <code>params</code>. See the code for the available data.</li></ol><h3 id="extra&#95;pages&#95;/&#95;posts">Extra pages / posts</h3><p>You can leverage the functions in <code>cryogen-core.compiler</code> and write your own, invoking them from your <code>cryogen.core/-main</code> and <code>cryogen.server/init</code>, to generate additional pages and posts in the same way as <code>compile-assets-timed</code> does.</p><h3 id="customizing&#95;the&#95;code">Customizing the code</h3><p>You can copy the <code>cryogen-core.compiler</code> namespace directly into your project (where it will override the one from the cryogen-core.jar) and modify it to your liking. It is not very long or complicated and is quite easy to modify. That is <a href='https://github.com/cryogen-project/cryogen-docs/blob/fd601c857cc88f7cb633a41c47b4c692e1522ed8/src/cryogen/compiler.clj'>what we did for this site</a> (although it uses a much older version of cryogen-core, you may still use the same strategy today).</p>
         </div>
 
         <div id="prev-next">
             
-            <a class="left" href="/docs/creating-pages.html">&laquo; Prev</a>
+            <a class="left" href="/docs/automating-with-travis.html">&laquo; Prev</a>
             
-            
-            <a class="right" href="/docs/customizing-the-index.html">Next &raquo;</a>
             
         </div>
     </div>
