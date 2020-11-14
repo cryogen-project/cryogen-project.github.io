@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
           type='text/css'>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
-    <link href="../css/screen.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -68,7 +68,7 @@
         
 
         <div id="content">
-            <p><a href='https://pages.GitHub.com/'>GitHub Pages</a> are freely hosted web pages on GitHub's <code>GitHub.io</code> domain. Normally, they are powered by <a href='http://jekyllrb.com'>Jekyll</a> but because GitHub Pages supports HTML content, it is possible to host your Cryogen-powered sites as well.</p><p>GitHub provides two basic types of hosting: <em>user/organization pages</em> and <em>project pages</em>. Both of these work by looking at specific branches of your repositories on GitHub. The way to deploy these two types of sites are very similar and only differ in their initial setup.</p><h2 id="setting&#95;up&#95;user&#95;and&#95;organization&#95;pages">Setting up User and Organization Pages</h2><p>User and organization pages must live in a GitHub repository dedicated to only your site's files. This repository must be named <em>username</em>.GitHub.io. Where <em>username</em> is your GitHub username or the name of the organization. For example, <code>lacarmen.github.io</code>.</p><p>Content from the <code>master</code> branch of your repository will be used to build and publish your site to your GitHub page.</p><p>If you'd like to create a user or organization page with Cryogen, please make sure the <code>blog-prefix</code> field in the configuration file is empty.</p><h2 id="setting&#95;up&#95;project&#95;pages">Setting up Project Pages</h2><p>Unlike user/organization pages, project pages are kept in the same repository as the project itself, except the site's content is stored in a specially named <code>gh-pages</code> branch. The output will become available under a subpath of your user page domain, such as <code>lacarmen.github.io/cryogen</code>.</p><p>If you'd like to use Cryogen to create a page for your project, please make sure the <code>blog-prefix</code> field in the configuration file matches the name of your project's repository.</p><h3 id="creating&#95;the&#95;gh-pages&#95;branch">Creating the gh-pages branch</h3><p>To create the branch for your project page, you must create a new "orphan" branch.</p><p>The safest way to do this is to create a fresh clone of your repository</p><pre><code>$ git clone https://github.com/user/repository.git
+            <p><a href="https://pages.GitHub.com/">GitHub Pages</a> are freely hosted web pages on GitHub's <code>GitHub.io</code> domain. Normally, they are powered by <a href="http://jekyllrb.com">Jekyll</a> but because GitHub Pages supports HTML content, it is possible to host your Cryogen-powered sites as well.</p><p>GitHub provides two basic types of hosting: <em>user/organization pages</em> and <em>project pages</em>. Both of these work by looking at specific branches of your repositories on GitHub. The way to deploy these two types of sites are very similar and only differ in their initial setup.</p><h2 id="setting_up_user_and_organization_pages">Setting up User and Organization Pages</h2><p>User and organization pages must live in a GitHub repository dedicated to only your site's files. This repository must be named <em>username</em>.GitHub.io. Where <em>username</em> is your GitHub username or the name of the organization. For example, <code>lacarmen.github.io</code>.</p><p>Content from the <code>master</code> branch of your repository will be used to build and publish your site to your GitHub page.</p><p>If you'd like to create a user or organization page with Cryogen, please make sure the <code>blog-prefix</code> field in the configuration file is empty.</p><h2 id="setting_up_project_pages">Setting up Project Pages</h2><p>Unlike user/organization pages, project pages are kept in the same repository as the project itself, except the site's content is stored in a specially named <code>gh-pages</code> branch. The output will become available under a subpath of your user page domain, such as <code>lacarmen.github.io/cryogen</code>.</p><p>If you'd like to use Cryogen to create a page for your project, please make sure the <code>blog-prefix</code> field in the configuration file matches the name of your project's repository.</p><h3 id="creating_the_gh-pages_branch">Creating the gh-pages branch</h3><p>To create the branch for your project page, you must create a new "orphan" branch.</p><p>The safest way to do this is to create a fresh clone of your repository</p><pre><code>$ git clone https://github.com/user/repository.git
 # Clone your repository
 </code></pre><p>Once you have a fresh repository, you'll need to create the <code>gh-pages</code> branch and rid it of all its content:</p><pre><code>$ cd repository
 
@@ -79,11 +79,11 @@ $ git checkout --orphan gh-pages
 $ git rm -rf .
 # Remove all files from the old working tree
 # rm .gitignore
-</code></pre><h2 id="deploying&#95;to&#95;github&#95;pages">Deploying to GitHub Pages</h2><p>Once you've set up your repository for the type of GitHub Page that you want, copy over all your files and folders under the root directory of your site - <code>public</code> if you're creating a user page; <code>public/YOUR-PROJECT-REPO-NAME</code> if you're creating a project page.</p><p>The last step is to push your content to GitHub.</p><pre><code>$ git add &#42;
-$ git commit -a -m &quot;Initial page commit&quot;
+</code></pre><h2 id="deploying_to_github_pages">Deploying to GitHub Pages</h2><p>Once you've set up your repository for the type of GitHub Page that you want, copy over all your files and folders under the root directory of your site - <code>public</code> if you're creating a user page; <code>public/YOUR-PROJECT-REPO-NAME</code> if you're creating a project page.</p><p>The last step is to push your content to GitHub.</p><pre><code>$ git add *
+$ git commit -a -m "Initial page commit"
 $ git push origin gh-pages
-</code></pre><p>If you make any changes to your site, simply follow this deployment step to update your GitHub Page.</p><h2 id="configuring&#95;custom&#95;domain&#95;names&#95;(cname)">Configuring Custom Domain Names (CNAME)</h2><p>If you'd like to use a custom domain, GitHub supports this by configuring a <code>CNAME</code> file in the root of your repository. You'll need to acquire a domain from a registrar and then setup either a <code>CNAME</code> record or an <code>A</code> record pointing to GitHub. GitHub has documentation <a href='https://help.github.com/articles/quick-start-setting-up-a-custom-domain/'>here</a> that details the difference.</p><p>For the Cryogen part, create a file called <code>CNAME</code> at <code>content/CNAME</code> with contents similar to this:</p><pre><code>cryogenweb.org
-</code></pre><p>Now edit your <code>config.edn</code> and add <code>CNAME</code> to your <code>:resources</code>:</p><pre><code class="clojure">:resources &#91;&quot;img&quot; &quot;CNAME&quot;&#93;
+</code></pre><p>If you make any changes to your site, simply follow this deployment step to update your GitHub Page.</p><h2 id="configuring_custom_domain_names_(cname)">Configuring Custom Domain Names (CNAME)</h2><p>If you'd like to use a custom domain, GitHub supports this by configuring a <code>CNAME</code> file in the root of your repository. You'll need to acquire a domain from a registrar and then setup either a <code>CNAME</code> record or an <code>A</code> record pointing to GitHub. GitHub has documentation <a href="https://help.github.com/articles/quick-start-setting-up-a-custom-domain/">here</a> that details the difference.</p><p>For the Cryogen part, create a file called <code>CNAME</code> at <code>content/CNAME</code> with contents similar to this:</p><pre><code>cryogenweb.org
+</code></pre><p>Now edit your <code>config.edn</code> and add <code>CNAME</code> to your <code>:resources</code>:</p><pre><code class="clojure">:resources ["img" "CNAME"]
 </code></pre><p>Now when you build, your CNAME file should be copied into your <code>public/</code> folder.</p>
         </div>
 
@@ -160,8 +160,8 @@ $ git push origin gh-pages
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="../js/main.js" type="text/javascript"></script>
-<script src="../js/highlight.pack.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/highlight.pack.js" type="text/javascript"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>

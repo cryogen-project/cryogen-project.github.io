@@ -10,7 +10,7 @@
     <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
           type='text/css'>
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
-    <link href="../css/screen.css" rel="stylesheet" type="text/css" />
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
     <script>
         (function (i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -66,48 +66,48 @@
             <h1>Klipse Integration</h1>
         </div>
         
-        <div id="toc"><ol class="contents"><li><a href="#configuration">Configuration</a></li><li><a href="#examples">Examples</a></li><ol><li><a href="#basic_config">Basic config</a></li><li><a href="#more_advanced_config">More advanced config</a></li></ol></div>
+        <div id="toc"><ol class="toc"><li><a href="#configuration">Configuration</a></li><li><a href="#examples">Examples</a></li><ol><li><a href="#basic_config">Basic config</a></li><li><a href="#more_advanced_config">More advanced config</a></li></ol></ol></div>
         
 
         <div id="content">
-            <p><a href='https://github.com/viebel/klipse'>Klipse</a> is a javascript plugin that transforms static code snippets of an html page into live and interactive snippets. making code snippets on a web page interactive. Visitors can edit the snippets and they are evaluated continuously as they type.</p><p>In Cryogen you can integrate Klipse in your blog with minimal effort. To get started, configure the Klipse plugin in <code>config.edn</code> and set <code>:klipse</code> to <code>true</code> in the post or page metadata. Alternatively you can override parts of the global configuration by passing a configuration map containing the desired changes to the <code>:klipse</code> key in the post/page metadata.</p><h2 id="configuration">Configuration</h2><p>The configuration is a map that may include the keys described below. The map must must contain at least selectors for the language(s) you want to klipsify, see examples below.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>settings</code></td> <td>Contains a clojure map that's passed to <code>window.klipse&#95;settings</code>. All the settings are documented <a href='https://github.com/viebel/klipse#configuration'>here</a>. (In cryogen you can use <code>:lisp-cased-keywords</code> instead of <code>&quot;snake&#95;cased&quot;</code>/<code>&quot;camelCased&quot;</code> strings.) </td> </tr> <tr> <td><code>js-src</code></td> <td>A map with the keys <code>:min</code> and <code>:non-min</code>. These are uris that point to the minified and non-minified version of the Klipse plugin. They default to the plugin hosted by Klipse, but to host it yourself, just set the appropriate uris. </td> </tr> <tr> <td><code>js</code></td> <td>Can be either <code>:min</code> or <code>:non-min</code>. Self-hosted clojurescript is not (yet?) compatible with advanced compilation, so if a post has cljs snippets, it needs to use the non-minified version, but any other languages can use the minified version. <br><br> Cryogen will infer this based on the setting and the classes in the code blocks in each post, so normally you don't need to worry about it. Can be overridden if necessary.</td> </tr> <tr> <td><code>css-base</code></td> <td>The uri to the codemirror css that is used by Klipse. As with <code>:js-src</code>, it defaults to css hosted by Klipse and you can override it if you want to host it yourself.</td> </tr> <tr> <td><code>css-theme</code></td> <td>You can also use a codemirror theme for the snippets, just set this to a uri pointing to one.</td> </tr> </tbody> </table></p><h2 id="examples">Examples</h2><h3 id="basic&#95;config">Basic config</h3><p>This config is all you need to write code blocks with live vanilla ClojureScript, Reagent and/or Ruby evaluation.</p><p><code>config.edn</code></p><pre><code>{...
+            <p><a href="https://github.com/viebel/klipse">Klipse</a> is a javascript plugin that transforms static code snippets of an html page into live and interactive snippets. making code snippets on a web page interactive. Visitors can edit the snippets and they are evaluated continuously as they type.</p><p>In Cryogen you can integrate Klipse in your blog with minimal effort. To get started, configure the Klipse plugin in <code>config.edn</code> and set <code>:klipse</code> to <code>true</code> in the post or page metadata. Alternatively you can override parts of the global configuration by passing a configuration map containing the desired changes to the <code>:klipse</code> key in the post/page metadata.</p><h2 id="configuration">Configuration</h2><p>The configuration is a map that may include the keys described below. The map must must contain at least selectors for the language(s) you want to klipsify, see examples below.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>settings</code></td> <td>Contains a clojure map that's passed to <code>window.klipse_settings</code>. All the settings are documented <a href="https://github.com/viebel/klipse#configuration">here</a>. (In cryogen you can use <code>:lisp-cased-keywords</code> instead of <code>"snake_cased"</code>/<code>"camelCased"</code> strings.) </td> </tr> <tr> <td><code>js-src</code></td> <td>A map with the keys <code>:min</code> and <code>:non-min</code>. These are uris that point to the minified and non-minified version of the Klipse plugin. They default to the plugin hosted by Klipse, but to host it yourself, just set the appropriate uris. </td> </tr> <tr> <td><code>js</code></td> <td>Can be either <code>:min</code> or <code>:non-min</code>. Self-hosted clojurescript is not (yet?) compatible with advanced compilation, so if a post has cljs snippets, it needs to use the non-minified version, but any other languages can use the minified version. <br /><br /> Cryogen will infer this based on the setting and the classes in the code blocks in each post, so normally you don't need to worry about it. Can be overridden if necessary.</td> </tr> <tr> <td><code>css-base</code></td> <td>The uri to the codemirror css that is used by Klipse. As with <code>:js-src</code>, it defaults to css hosted by Klipse and you can override it if you want to host it yourself.</td> </tr> <tr> <td><code>css-theme</code></td> <td>You can also use a codemirror theme for the snippets, just set this to a uri pointing to one.</td> </tr> </tbody> </table></p><h2 id="examples">Examples</h2><h3 id="basic_config">Basic config</h3><p>This config is all you need to write code blocks with live vanilla ClojureScript, Reagent and/or Ruby evaluation.</p><p><code>config.edn</code></p><pre><code>{...
 :hide-future-posts? true
 
-:klipse {:settings {:selector &quot;.klipse-cljs&quot;
-                    :selector-reagent &quot;.klipse-reagent&quot;
-                    :selector-eval-ruby &quot;.klipse-ruby&quot;}}
+:klipse {:settings {:selector ".klipse-cljs"
+                    :selector-reagent ".klipse-reagent"
+                    :selector-eval-ruby ".klipse-ruby"}}
 
 :debug? false}
-</code></pre><p><code>hello-world.md</code></p><pre><code>{:title &quot;A post&quot;
+</code></pre><p><code>hello-world.md</code></p><pre><code>{:title "A post"
  :layout :post
- :date &quot;2017-01-19&quot;
+ :date "2017-01-19"
  :klipse true
- :tags &#91;&quot;cljs&quot;&#93;}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-cljs
-&#40;map #&#40;&#42; % %&#41; &#40;range 10&#41;&#41;
-```</code></pre><p>Alternatively, for asciidoc:</p><p><code>hello-world.asc</code></p><pre><code>{:title &quot;A post&quot;
+ :tags ["cljs"]}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-cljs
+(map #(* % %) (range 10))
+```</code></pre><p>Alternatively, for asciidoc:</p><p><code>hello-world.asc</code></p><pre><code>{:title "A post"
  :layout :post
- :date &quot;2017-01-19&quot;
+ :date "2017-01-19"
  :klipse true
- :tags &#91;&quot;cljs&quot;&#93;}</code></pre><pre><code>== Hello world!</code></pre><pre><code>&#91;source,klipse-cljs&#93;
+ :tags ["cljs"]}</code></pre><pre><code>== Hello world!</code></pre><pre><code>[source,klipse-cljs]
 ----
-&#40;map #&#40;&#42; % %&#41; &#40;range 10&#41;&#41;
-----</code></pre><p>(Notice that in both cases <code>language-</code> is prepended to the language so the selector is <code>.language-klipse-cljs</code>.)</p><h3 id="more&#95;advanced&#95;config">More advanced config</h3><p>This one has some more configuration to show how you can override settings in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
+(map #(* % %) (range 10))
+----</code></pre><p>(Notice that in both cases <code>language-</code> is prepended to the language so the selector is <code>.language-klipse-cljs</code>.)</p><h3 id="more_advanced_config">More advanced config</h3><p>This one has some more configuration to show how you can override settings in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
 :hide-future-posts? true
 
-:klipse {:settings {:selector &quot;.klipse-cljs&quot;
-                    :selector-reagent &quot;.klipse-reagent&quot;
-                    :selector-eval-ruby &quot;.klipse-ruby&quot;
+:klipse {:settings {:selector ".klipse-cljs"
+                    :selector-reagent ".klipse-reagent"
+                    :selector-eval-ruby ".klipse-ruby"
                     :codemirror-options-in {:line-numbers true}
                     :codemirror-options-out {:line-numbers true}}
          ;; Set a css theme for the code snippets.
-         :css-theme &quot;/css/some-codemirror-theme.css&quot;}
+         :css-theme "/css/some-codemirror-theme.css"}
 
 :debug? false}
-</code></pre><p><code>hello-world.md</code></p><pre><code>{:title &quot;A post&quot;
+</code></pre><p><code>hello-world.md</code></p><pre><code>{:title "A post"
  :layout :post
- :date &quot;2017-01-19&quot;</code></pre><pre><code> ;; Override config.edn and turn off line numbers for snippet output.
- :klipse {:settings {:codemirror-options-out {:line-numbers false}}}</code></pre><pre><code> :tags &#91;&quot;cljs&quot;&#93;}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-ruby
-&#40;0...10&#41;.map {|i| i &#42; i}
+ :date "2017-01-19"</code></pre><pre><code> ;; Override config.edn and turn off line numbers for snippet output.
+ :klipse {:settings {:codemirror-options-out {:line-numbers false}}}</code></pre><pre><code> :tags ["cljs"]}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-ruby
+(0...10).map {|i| i * i}
 ```</code></pre>
         </div>
 
@@ -184,8 +184,8 @@
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="../js/main.js" type="text/javascript"></script>
-<script src="../js/highlight.pack.js" type="text/javascript"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/highlight.pack.js" type="text/javascript"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 </body>
 </html>
