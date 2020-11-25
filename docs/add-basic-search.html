@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Cryogen: Basic Search with Lunr</title>
+    <link rel="icon" href="/img/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/color-brewer.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400,700' rel='stylesheet'
+          type='text/css'>
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:400,400italic">
+    <link href="/css/screen.css" rel="stylesheet" type="text/css" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-56703143-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <meta name="keywords" content="cryogen, clojure, blog engine, static site, static site generator, leiningen">
+    <meta name="description"
+          content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
+    
+    
+    <meta name="canonical" content="http://cryogenweb.org/docs/add-basic-search.html">
+    
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-6">
+                <a href="/index.html"><img height="120px" src="/img/banner.png"/>
+                    <h1>Cryogen</h1></a>
+                <h2 id="slogan" class="faint">Static sites generated with Clojure</h2>
+            </div>
+            <div class="col-lg-7 col-md-7 col-sm-6">
+                <nav>
+                    <ul id="menu" class="nav nav-pills navbar-right">
+                        <li><a id="home-link" href="/index.html">Home</a></li>
+                        <li><a id="docs-link" href="/docs/home.html">Doc<span class="show-on-mobile">s</span><span
+                                class="hide-on-mobile">umentation</span></a></li>
+                        <li><a href="https://github.com/cryogen-project/cryogen"><span class="hide-on-mobile">View on </span>GitHub</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="main" class="row">
+        
+
+<div class="row">
+    <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
+        <div id="page-header">
+            <h1>Basic Search with Lunr</h1>
+        </div>
+        
+        <div id="toc"><ol class="toc"><li><a href="#prerequisites">Prerequisites</a></li><li><a href="#copy_build-index.js">Copy build-index.js</a></li><ol><li><a href="#most_notable_lines">Most notable lines</a></li></ol><li><a href="#create_an_index_file">Create an index file</a></li><li><a href="#download_lunrclient.js">Download lunrclient.js</a></li><li><a href="#changes_to_html_and_css">Changes to HTML and CSS</a></li></ol></div>
+        
+
+        <div id="content">
+            <p>To enable search for your site, you can use <a href="https://lunrjs.com/"><code>Lunr</code></a>, which will create a searchable index without the need for any server-side or external search service. The inspiration to integrate Lunr with Cryogen was the following site <a href="https://github.com/BLE-LTER/Lunr-Index-and-Search-for-Static-Sites"><code>Lunr-Index-and-Search-for-Static-Sites</code></a>, where the source JavaScript files can be found, which are used with slightly modifications here.</p><p>A live demo of the result can be found at: <a href="https://blog.stderr.at/">https://blog.stderr.at/</a></p><h2 id="prerequisites">Prerequisites</h2><p>Before we start, Node.js and some modules must be installed on your system:</p><ol><li>Install <a href="https://nodejs.org/en/download/"><code>Node.js</code></a></li><li>Install lunr: <code>npm install lunr</code></li><li>Install cheerio: <code>npm install cheerio</code></li></ol><h2 id="copy_build-index.js">Copy build-index.js</h2><p>As the filename says, this script will create the index file, which will be used to search your pages.</p><blockquote><p> <em>NOTE</em>: Everytime when a new post/page is published, the index should be recreated. Therefore, the best option would be to add this to your deployment routine. </p></blockquote><p>Download: <a href="/lunr/build-index.js">build-index.js</a></p><h3 id="most_notable_lines">Most notable lines</h3><p>The following lines might require attention:</p><p>Line 8: The output folder of the html files. In this example only <strong>posts-output</strong> will be indexed (no tags, no pages).</p><pre><code class="js">const HTML_FOLDER = "public/posts-output";
+</code></pre><p>Line 11: Files to exclude from the index</p><pre><code class="js">const EXCLUDE_FILES = ["search.html"];
+</code></pre><p>Line 13: The output path and filename for the index. This depends on your actual theme.</p><pre><code class="js">const OUTPUT_INDEX = "themes/nucleus/js/index/lunr_index.js";
+</code></pre><p>Line 64: This adds "posts-output" to the link, which might be removed depending on you page</p><pre><code class="js">        "link": "posts-output/"+file,
+</code></pre><h2 id="create_an_index_file">Create an index file</h2><p>The index file should be created with any new post or page which is published using the following command:</p><pre><code class="bash">node ./build-index.js
+</code></pre><h2 id="download_lunrclient.js">Download lunrclient.js</h2><p>Download <a href="/lunr/lunrclient.js">lunrclient.js</a> and place it into the <code>js/</code> folder of your theme.</p><p>This script will create the search result page.</p><h2 id="changes_to_html_and_css">Changes to HTML and CSS</h2><p>Changes to the actual html/css highly depend on your theme. Therefor only a basic snippets of a possible change of the <strong>base.html</strong> are shown here.</p><p>In the <code>head</code> tag the JavaScript files must be loaded. First lunr itself, then the indexfile and then the client file:</p><pre><code class="html">    &lt;script src="https://unpkg.com/lunr/lunr.js"&gt;&lt;/script&gt;
+    &lt;script src="/js/index/lunr_index.js"&gt;&lt;/script&gt;
+    &lt;script src="/js/lunrclient.js"&gt;&lt;/script&gt;
+</code></pre><p>The search form can look like this:</p><pre><code class="html">    &lt;!--- Search form --&gt;
+    &lt;form id="lunrSearchForm" name="lunrSearchForm" action="/"&gt;
+        &lt;input class="search-input" name="q" placeholder="Enter search term" type="text"&gt;
+        &lt;input class="button nopadding" type="submit" value="Search"&gt;
+    &lt;/form&gt;
+    &lt;div class="loading" id="loading-div"&gt;
+        &lt;i class="fa fa-spinner fa-pulse fa-3x fa-fw"&gt;&lt;/i&gt;
+        &lt;span class="sr-only"&gt;Loading...&lt;/span&gt;
+    &lt;/div&gt;
+</code></pre><p>Last but not least the search result is rendered in the main page (right side, nucleus example theme was used here). The script <code>lunrclient.js</code> will replace the elements "resultCount" and "searchResults".</p><pre><code class="html">&lt;div id="right" class="clearfix"&gt;
+  &lt;div class="resultCount" id="resultCount"&gt;&lt;/div&gt;
+  &lt;hr /&gt;
+  &lt;div id="searchResults"&gt;
+    {% block content %}
+    {% endblock %}
+  &lt;/div&gt;
+</code></pre><p>Tip: If you use the nucleus example template, or any javascript which does a <strong>window.onload</strong>, you may want to do the following changes too:</p><p><code>themes/nucleus/js/scripts.js</code> add</p><pre><code class="js">/* window.onload function */
+function start()
+{
+  externalLinks();
+  startlunr();
+}
+</code></pre><p>Remove <code>window.onload = externalLinks</code>from the line</p><pre><code class="js"> function externalLinks() { if (!document.getElementsByTagName) return; var anchors = document.getElementsByTagName("a"); for (var i=0; i&lt;anchors.length; i++) { var anchor = anchors[i]; if (anchor.getAttribute("href") &amp;&amp; anchor.getAttribute("rel") == "external") anchor.target = "_blank"; } } window.onload = externalLinks;
+</code></pre><p><code>themes/nucleus/html/base.html</code></p><p>Below the line <code>{% script "js/scripts.js" %}</code> add:</p><pre><code class="html">&lt;script&gt;window.onload = start;&lt;/script&gt;
+</code></pre>
+        </div>
+
+        <div id="prev-next">
+            
+            <a class="left" href="/docs/deploying-with-travis.html">&laquo; Prev</a>
+            
+            
+        </div>
+    </div>
+    <div id="topics-list" class="col-lg-3 col-md-3 col-sm-12">
+        <div id="topics">
+            
+            <h4>Getting Started</h4>
+            <ul>
+                
+                <li><a href="/docs/home.html">Welcome</a></li>
+                
+                <li><a href="/docs/getting-started.html">Getting Started</a></li>
+                
+                <li><a href="/docs/structure.html">Directory Structure</a></li>
+                
+                <li><a href="/docs/configuration.html">Configuration</a></li>
+                
+            </ul>
+            
+            <h4>Your Content</h4>
+            <ul>
+                
+                <li><a href="/docs/writing-posts.html">Writing Posts</a></li>
+                
+                <li><a href="/docs/creating-pages.html">Creating Pages</a></li>
+                
+                <li><a href="/docs/switching-markdown-asciidoc.html">Switching between Markdown and AsciiDoc</a></li>
+                
+                <li><a href="/docs/customizing-the-index.html">Customizing your Index Page</a></li>
+                
+                <li><a href="/docs/klipse.html">Klipse Integration</a></li>
+                
+            </ul>
+            
+            <h4>Deployment</h4>
+            <ul>
+                
+                <li><a href="/docs/deploying-to-github-pages.html">GitHub Pages</a></li>
+                
+                <li><a href="/docs/deploying-with-nginx-VPS.html">Nginx on a VPS</a></li>
+                
+            </ul>
+            
+            <h4>Additional Resources</h4>
+            <ul>
+                
+                <li><a href="/docs/customizing-cryogen.html">Customizing/Extending Cryogen</a></li>
+                
+                <li><a href="/docs/deploying-with-travis.html">Deploying with Travis CI</a></li>
+                
+                <li><a href="/docs/add-basic-search.html">Basic Search with Lunr</a></li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <footer class="text-center text-muted">
+        <p>Copyright &copy; 2014 - <span id="cpyear"></span> <span>Carmen La</span><br>
+
+        Powered by <a href="https://github.com/cryogen-project/cryogen">Cryogen</a></p>
+    </footer>
+</div>
+
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/main.js" type="text/javascript"></script>
+<script src="/js/highlight.pack.js" type="text/javascript"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>
