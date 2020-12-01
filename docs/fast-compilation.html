@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Welcome</title>
+    <title>Cryogen: Fast Compilation</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/home.html">
+    <meta name="canonical" content="http://cryogenweb.org/docs/fast-compilation.html">
     
 </head>
 <body>
@@ -63,18 +63,20 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
-            <h1>Welcome</h1>
+            <h1>Fast Compilation</h1>
         </div>
+        
+        <div id="toc"><ol class="toc"><li><a href="#limitations">Limitations</a></li><li><a href="#how_to_enable">How to enable</a></li></ol></div>
         
 
         <div id="content">
-            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2 id="what_is_cryogen?">What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href="https://GitHub.com/yogthos/selmer">Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href="https://github.com/cryogen-project/cryogen/issues/new">open an issue</a> on the GitHub page and further instructions can be included here.</p>
+            <p>As of Cryogen 0.5.0 <a href="https://github.com/cryogen-project/cryogen-core/pull/149">there is support for fast but partial compilation</a>. It is intended to be used when you work on a blog post or page and want to see it quickly, without re-compiling the whole site.</p><p><strong>BEWARE</strong>: This feature is only intended for "development," make sure to make a full build (f.ex. via <code>lein run</code>) before publishing your site.</p><h2 id="limitations">Limitations</h2><p>The difference from a full compilation is that the output directory is not wiped out and that only the changed markup file plus all non-page/post output files are compiled. If you change any other file, such as inside the template, a full compilation runs.</p><p>The downsides are that the previous and next links on neighboring posts will not be updated and that all derived pages such as the index, tag pages, archives, site map, and RSS will only know about this changed post/page. Thus the blog is in an inconsistent state, until a full compilation is performed.</p><p><i>(NOTE: To support a consistent incremental compilation: instead of simply filtering out unchanged files, we would need "read in" all to have the metadata but skip markup processing and output for the unchanged ones + update the neighboring posts.)</i></p><h2 id="how_to_enable">How to enable</h2><p>To enable the partial, fast compilation, replace the calls to <code>start-watcher!</code> with <code>start-watcher-for-changes!</code> in your blog's <code>src/cryogen/server.clj</code>.</p>
         </div>
 
         <div id="prev-next">
             
+            <a class="left" href="/docs/add-basic-search.html">&laquo; Prev</a>
             
-            <a class="right" href="/docs/getting-started.html">Next &raquo;</a>
             
         </div>
     </div>
