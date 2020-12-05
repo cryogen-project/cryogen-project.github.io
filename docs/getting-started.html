@@ -68,15 +68,9 @@
         
 
         <div id="content">
-            <p>Cryogen aims to be as simple as possible. There's no need to set up a database or jump through hoops just to get a boilerplate template going.</p><p>To get started, you'll need to have either <a href="http://leiningen.org/">Leiningen</a> or <a href="https://clojure.org/guides/deps_and_cli">Clojure CLI</a> with <a href="https://github.com/seancorfield/clj-new/">clj-new</a>. Once you have that ready, here's how to get the base template.</p><pre><code># Leiningen:
-~ $ lein new cryogen my-blog
+            <p>Cryogen aims to be as simple as possible. There's no need to set up a database or jump through hoops just to get a boilerplate template going.</p><p>To get started, you'll need to have <a href="http://leiningen.org/">Leiningen</a> installed. Once you have that ready, here's how to get the base template.</p><pre><code>~ $ lein new cryogen my-blog
 ~ $ cd my-blog
-~/my-blog $ lein serve
-
-# Clojure CLI:
-~ $ clojure -X:new create :template cryogen :name me/my-blog
-~ $ cd my-blog
-~/my-blog $ clojure -X:serve
+~/my-blog $ lein ring server
 </code></pre><p>Once the server starts, you can visit your site at <code>localhost:3000</code>. The first thing you'll see is a helpful README on what to do next.</p>
         </div>
 
@@ -137,6 +131,8 @@
                 <li><a href="/docs/deploying-with-travis.html">Deploying with Travis CI</a></li>
                 
                 <li><a href="/docs/add-basic-search.html">Basic Search with Lunr</a></li>
+                
+                <li><a href="/docs/fast-compilation.html">Fast Compilation</a></li>
                 
             </ul>
             
