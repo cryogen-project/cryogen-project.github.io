@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Cryogen: Welcome</title>
+    <title>Cryogen: Netlify</title>
     <link rel="icon" href="/img/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
           content="Cryogen is a simple static site generator built with Clojure and designed by Carmen La. It's shipped on Leiningen so setup is simple and fuss free.">
     
     
-    <meta name="canonical" content="http://cryogenweb.org/docs/home.html">
+    <meta name="canonical" content="http://cryogenweb.org/docs/deploying-to-netlify.html">
     
 </head>
 <body>
@@ -63,18 +63,20 @@
 <div class="row">
     <div id="reading-pane" class="col-lg-9 col-md-9 col-sm-12">
         <div id="page-header">
-            <h1>Welcome</h1>
+            <h1>Netlify</h1>
         </div>
         
 
         <div id="content">
-            <p>This site aims to be a complete guide to Cryogen. I hope to cover how to get your site up and running, creating and managing your content and layouts, customizing the aesthetics and functionality of your site, and finally how to deploy your site.</p><h2 id="what_is_cryogen?">What is Cryogen?</h2><p>Cryogen is a simple static site generator built with Clojure. It's shipped on Leiningen so setup is fuss free and there's no need to mess with databases or other CMS systems. </p><p>Cryogen reads through a directory containing your Markdown content, compiles it into HTML and injects the content into your templates with the <a href="https://GitHub.com/yogthos/selmer">Selmer</a> templating system. It then spits out a ready-to-publish website complete with a sitemap and RSS feed.</p><p>If you come across anything along the way that this guide doesn't cover, please <a href="https://github.com/cryogen-project/cryogen/issues/new">open an issue</a> on the GitHub page and further instructions can be included here.</p>
+            <p><a href="https://www.netlify.com">Netlify</a> provides free hosting of non-commerecial static sites and builds automatically from a repository. </p><p>Once Netlify is configured, every time you push to github your site will be updated. </p><h2 id="short_instructions">Short instructions</h2><ol><li>In content/config.edn set <code>:blog-prefix</code> to <code>""</code>.</li><li>Make sure git is tracking public/.</li><li>Leave the Netlify build instructions blank.</li><li>Set Netlify's "Publish directory" to "public".</li><li>Do <code>lein run</code> to generate public/.</li><li>Push at least the public/ folder, but you can push everything to github and Netlify will only show what's in public/.</li></ol><h2 id="long_instructions">Long instructions</h2><ol><li>Make a Netlify account.</li><li>Make a github, bitbucket, or gitlab repo.</li><li>Connect Netlify to your blog repo.</li><li>In content/config.edn set <code>:blog-prefix</code> to <code>""</code></li><li>Have git track public/ . It may be helpful to edit your .gitignore.</li><li>set Netlify's "Publish directory" to "public".</li><li>Leave Netlify's build instructions blank.</li><li>Do <code>lein run</code> to generate public/.</li><li>Push at least the public/ folder, but you can push everything to the repo and Netlify will only show what's in public/.</li></ol><h2 id="troubleshooting">Troubleshooting</h2><h3 id="home_page_shows_but_the_links_are_broken_and_css/theme_doesn't_load">Home page shows but the links are broken and CSS/Theme doesn't load</h3><p>You probably did not set <code>:blog-prefix</code> to <code>""</code>.</p><p>If :blog-prefix has been set correctly and you have updated the site using <code>lein run</code> then <a href="https://answers.netlify.com/t/can-i-download-my-website/3622">download Netlify's version of your site.</a> You'll have to figure it out for yourself what isn't working.</p><h3 id="404_when_viewing_the_homepage">404 when viewing the homepage</h3><p>This means Netlify can't find your content. This is probably caused by not setting the "Publish directory" to "public". </p><p>Alternatively, public/ is in your gitignore and you forgot to push public/.</p>
         </div>
 
         <div id="prev-next">
             
+            <a class="left" href="/docs/deploying-with-nginx-VPS.html">&laquo; Prev</a>
             
-            <a class="right" href="/docs/getting-started.html">Next &raquo;</a>
+            
+            <a class="right" href="/docs/customizing-cryogen.html">Next &raquo;</a>
             
         </div>
     </div>
