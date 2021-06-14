@@ -66,11 +66,19 @@
             <h1>Klipse Integration</h1>
         </div>
         
-        <div id="toc"><ol class="toc"><li><a href="#configuration">Configuration</a></li><li><a href="#examples">Examples</a></li><ol><li><a href="#basic_config">Basic config</a></li><li><a href="#more_advanced_config">More advanced config</a></li></ol></ol></div>
+        <div id="toc"><ol class="toc"><li><a href="#configuration">Configuration</a></li><li><a href="#examples">Examples</a></li><ol><li><a href="#basic-config">Basic config</a></li><li><a href="#more-advanced-config">More advanced config</a></li></ol></ol></div>
         
 
         <div id="content">
-            <p><a href="https://github.com/viebel/klipse">Klipse</a> is a javascript plugin that transforms static code snippets of an html page into live and interactive snippets. making code snippets on a web page interactive. Visitors can edit the snippets and they are evaluated continuously as they type.</p><p>In Cryogen you can integrate Klipse in your blog with minimal effort. To get started, configure the Klipse plugin in <code>config.edn</code> and set <code>:klipse</code> to <code>true</code> in the post or page metadata. Alternatively you can override parts of the global configuration by passing a configuration map containing the desired changes to the <code>:klipse</code> key in the post/page metadata.</p><h2 id="configuration">Configuration</h2><p>The configuration is a map that may include the keys described below. The map must must contain at least selectors for the language(s) you want to klipsify, see examples below.</p><p><table class="table table-bordered"> <thead> <tr> <th>Key</th> <th>Description</th> </tr> </thead> <tbody> <tr> <td><code>settings</code></td> <td>Contains a clojure map that's passed to <code>window.klipse_settings</code>. All the settings are documented <a href="https://github.com/viebel/klipse#configuration">here</a>. (In cryogen you can use <code>:lisp-cased-keywords</code> instead of <code>"snake_cased"</code>/<code>"camelCased"</code> strings.) </td> </tr> <tr> <td><code>js-src</code></td> <td>A map with the keys <code>:min</code> and <code>:non-min</code>. These are uris that point to the minified and non-minified version of the Klipse plugin. They default to the plugin hosted by Klipse, but to host it yourself, just set the appropriate uris. </td> </tr> <tr> <td><code>js</code></td> <td>Can be either <code>:min</code> or <code>:non-min</code>. Self-hosted clojurescript is not (yet?) compatible with advanced compilation, so if a post has cljs snippets, it needs to use the non-minified version, but any other languages can use the minified version. <br /><br /> Cryogen will infer this based on the setting and the classes in the code blocks in each post, so normally you don't need to worry about it. Can be overridden if necessary.</td> </tr> <tr> <td><code>css-base</code></td> <td>The uri to the codemirror css that is used by Klipse. As with <code>:js-src</code>, it defaults to css hosted by Klipse and you can override it if you want to host it yourself.</td> </tr> <tr> <td><code>css-theme</code></td> <td>You can also use a codemirror theme for the snippets, just set this to a uri pointing to one.</td> </tr> </tbody> </table></p><h2 id="examples">Examples</h2><h3 id="basic_config">Basic config</h3><p>This config is all you need to write code blocks with live vanilla ClojureScript, Reagent and/or Ruby evaluation.</p><p><code>config.edn</code></p><pre><code>{...
+            <p><a href="https://github.com/viebel/klipse">Klipse</a>
+is a javascript plugin that transforms static code snippets of an html page into live and
+interactive snippets. making code snippets on a web page interactive.
+Visitors can edit the snippets and they are evaluated continuously as they type.</p><p>In Cryogen you can integrate Klipse in your blog with minimal effort.
+To get started, configure the Klipse plugin in <code>config.edn</code> and set <code>:klipse</code> to <code>true</code> in
+the post or page metadata.
+Alternatively you can override parts of the global configuration by passing a
+configuration map containing the desired changes to the <code>:klipse</code> key in the post/page metadata.</p><h2 id="configuration">Configuration</h2><p>The configuration is a map that may include the keys described below. The map must must contain at least selectors for the language(s) you want to klipsify, see examples below.</p><table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody><tr><td><code>settings</code></td><td>Contains a clojure map that's passed to <code>window.klipse_settings</code>. All the settings are documented <a href="https://github.com/viebel/klipse#configuration">here</a>. (In cryogen you can use <code>:lisp-cased-keywords</code> instead of <code>"snake_cased"</code>/<code>"camelCased"</code> strings.)</td></tr><tr><td><code>js-src</code></td><td>A map with the keys <code>:min</code> and <code>:non-min</code>. These are uris that point to the minified and non-minified version of the Klipse plugin. They default to the plugin hosted by Klipse, but to host it yourself, just set the appropriate uris.</td></tr><tr><td><code>js</code></td><td>Can be either <code>:min</code> or <code>:non-min</code>. Self-hosted clojurescript is not (yet?) compatible with advanced compilation, so if a post has cljs snippets, it needs to use the non-minified version, but any other languages can use the minified version. <br /><br /> Cryogen will infer this based on the setting and the classes in the code blocks in each post, so normally you don't need to worry about it. Can be overridden if necessary.</td></tr><tr><td><code>css-base</code></td><td>The uri to the codemirror css that is used by Klipse. As with <code>:js-src</code>, it defaults to css hosted by Klipse and you can override it if you want to host it yourself.</td></tr><tr><td><code>css-theme</code></td><td>You can also use a codemirror theme for the snippets, just set this to a uri pointing to one.</td></tr></tbody></table><!-- TODO: Add {.table .table-bordered} when the flexmark ext. https://github.com/vsch/flexmark-java/wiki/Attributes-Extension added --><h2 id="examples">Examples</h2><h3 id="basic-config">Basic config</h3><p>This config is all you need to write code blocks with live vanilla ClojureScript,
+Reagent and/or Ruby evaluation.</p><p><code>config.edn</code></p><pre><code>{...
 :hide-future-posts? true
 
 :klipse {:settings {:selector ".klipse-cljs"
@@ -82,16 +90,27 @@
  :layout :post
  :date "2017-01-19"
  :klipse true
- :tags ["cljs"]}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-cljs
+ :tags ["cljs"]}
+
+## Hello world!
+
+```klipse-cljs
 (map #(* % %) (range 10))
-```</code></pre><p>Alternatively, for asciidoc:</p><p><code>hello-world.asc</code></p><pre><code>{:title "A post"
+```
+</code></pre><p>Alternatively, for asciidoc:</p><p><code>hello-world.asc</code></p><pre><code>{:title "A post"
  :layout :post
  :date "2017-01-19"
  :klipse true
- :tags ["cljs"]}</code></pre><pre><code>== Hello world!</code></pre><pre><code>[source,klipse-cljs]
+ :tags ["cljs"]}
+
+== Hello world!
+
+[source,klipse-cljs]
 ----
 (map #(* % %) (range 10))
-----</code></pre><p>(Notice that in both cases <code>language-</code> is prepended to the language so the selector is <code>.language-klipse-cljs</code>.)</p><h3 id="more_advanced_config">More advanced config</h3><p>This one has some more configuration to show how you can override settings in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
+----
+</code></pre><p>(Notice that in both cases <code>language-</code> is prepended to the language so the selector is <code>.language-klipse-cljs</code>.)</p><h3 id="more-advanced-config">More advanced config</h3><p>This one has some more configuration to show how you can override settings
+in a specific post.</p><p><code>config.edn</code></p><pre><code>{...
 :hide-future-posts? true
 
 :klipse {:settings {:selector ".klipse-cljs"
@@ -105,10 +124,19 @@
 :debug? false}
 </code></pre><p><code>hello-world.md</code></p><pre><code>{:title "A post"
  :layout :post
- :date "2017-01-19"</code></pre><pre><code> ;; Override config.edn and turn off line numbers for snippet output.
- :klipse {:settings {:codemirror-options-out {:line-numbers false}}}</code></pre><pre><code> :tags ["cljs"]}</code></pre><pre><code>## Hello world!</code></pre><pre><code>```klipse-ruby
+ :date "2017-01-19"
+
+ ;; Override config.edn and turn off line numbers for snippet output.
+ :klipse {:settings {:codemirror-options-out {:line-numbers false}}}
+
+ :tags ["cljs"]}
+
+## Hello world!
+
+```klipse-ruby
 (0...10).map {|i| i * i}
-```</code></pre>
+```
+</code></pre>
         </div>
 
         <div id="prev-next">
@@ -160,14 +188,14 @@
                 
                 <li><a href="/docs/deploying-to-netlify.html">Netlify</a></li>
                 
+                <li><a href="/docs/deploying-with-travis.html">Deploying with Travis CI</a></li>
+                
             </ul>
             
             <h4>Additional Resources</h4>
             <ul>
                 
                 <li><a href="/docs/customizing-cryogen.html">Customizing/Extending Cryogen</a></li>
-                
-                <li><a href="/docs/deploying-with-travis.html">Deploying with Travis CI</a></li>
                 
                 <li><a href="/docs/add-basic-search.html">Basic Search with Lunr</a></li>
                 
