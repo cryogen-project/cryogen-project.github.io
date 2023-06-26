@@ -73,12 +73,14 @@
 CLI</a>
 with <a href="https://github.com/seancorfield/clj-new#installation-as-a-tool">clj-new as a
 tool</a>.
-Once you have that ready, here's how to get the base template.</p><pre><code># Leiningen:
+Once you have that ready, here's how to get the base template.</p><pre><code># Clj-new
+~ $ clojure -Ttools install com.github.seancorfield/clj-new '{:git/tag "v1.2.362"}' :as clj-new
+</code></pre><pre><code># Leiningen:
 ~ $ lein new cryogen my-blog
 ~ $ cd my-blog
 
 # start continuous build that watches for changes
-~/my-blog $ lein serve
+~/my-blog $ lein serve # or lein serve:fast 
 
 # build for deployment
 ~ $ lein run
@@ -88,11 +90,11 @@ Once you have that ready, here's how to get the base template.</p><pre><code># L
 ~ $ cd me.my-blog
 
 # start continuous build that watches for changes
-~/my-blog $ clojure -X:serve
+~/my-blog $ clojure -X:serve # or clojure -X:serve:fast
 
 # build for deployment
 ~ $ clojure -M:build
-</code></pre><p>Once the server starts, you can visit your site at <code>localhost:3000</code>. The first thing you'll see is a helpful README on what to do next.</p>
+</code></pre><p>Once the server starts, you can visit your site at <code>localhost:3000</code><sup>*</sup>. The first thing you'll see is a helpful README on what to do next.</p><p><sup>*</sup>) You can override the default port by setting the env variable PORT: <code>env PORT=8080 lein serve</code></p>
         </div>
 
         <div id="prev-next">
